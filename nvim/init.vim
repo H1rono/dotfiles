@@ -1,0 +1,10 @@
+syntax enable
+set backspace=indent,eol,start
+set noerrorbells
+set list
+set expandtab
+set shiftwidth=4
+set softtabstop=4
+set tabstop=8
+set title
+set number

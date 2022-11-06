@@ -5,8 +5,9 @@ my dotfiles
 ## tested environment(s)
 
 - MacBook Air (Apple M1 Sillicon)
-    - Memory: 16GB
     - OS: Ventura 13.0
+- Raspberry Pi 4B
+    - OS: Raspberry Pi OS
 
 ## software structure
 
@@ -23,6 +24,7 @@ my dotfiles
 
 ```
 dotfiles
+├── install.sh        -- install script of dotfiles, tested only in Raspberry Pi
 ├── LICENSE           -- GPL-3.0 license
 ├── README.md         -- this file
 ├── nvim

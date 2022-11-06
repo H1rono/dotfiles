@@ -12,8 +12,8 @@ my dotfiles
 
 - version manager: [asdf](https://asdf-vm.com/)
 - shell: [Zsh](https://www.zsh.org)
-- terminal emulator: [WezTerm](https://github.com/wez/wezterm)
-- Zsh plugin manager: [Sheldon](https://wezfurlong.org/wezterm/)
+- terminal emulator: [WezTerm](https://wezfurlong.org/wezterm/)([GitHub](https://github.com/wez/wezterm))
+- Zsh plugin manager: [Sheldon](https://github.com/rossmacarthur/sheldon)
     - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
     - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
 - prompt customizing: [Starship](https://starship.rs/ja-jp/)

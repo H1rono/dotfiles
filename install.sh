@@ -18,7 +18,6 @@ function install() {
 
 install "$src/zshrc" "$dest/.zshrc"
 install "$src/wezterm.lua" "$dest/.wezterm.lua"
-install "$src/tool-versions" "$dest/.tool-versions"
 echo "mkdir -p \"$dest/.config\""
 mkdir -p "$dest/.config"
 install "$src/starship.toml" "$dest/.config/starship.toml"

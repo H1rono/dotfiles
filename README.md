@@ -11,7 +11,6 @@ my dotfiles
 
 ## software structure
 
-- version manager: [asdf](https://asdf-vm.com/)
 - shell: [Zsh](https://www.zsh.org)
 - terminal emulator: [WezTerm](https://wezfurlong.org/wezterm/)([GitHub](https://github.com/wez/wezterm))
 - Zsh plugin manager: [Sheldon](https://github.com/rossmacarthur/sheldon)
@@ -32,7 +31,6 @@ dotfiles
 ├── sheldon
 │   └── plugins.toml  -- Sheldon plugin information
 ├── starship.toml     -- Starship configuration
-├── tool-versions     -- asdf version information
 ├── wezterm.lua       -- WezTerm configuration
 └── zshrc             -- Zsh startup script
 ```

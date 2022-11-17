@@ -30,8 +30,8 @@ add_newline = false
 
 [username]
 show_always = true
-style_user = "bg:#56B6C2"
-style_root = "bg:#56B6C2"
+style_user = "fg:black bg:#56B6C2"
+style_root = "fg:black bg:#56B6C2"
 format = '[$user ]($style)'
 
 [character]
@@ -40,7 +40,7 @@ success_symbol = "[\uf054](bold green)"     # \uf054: nf-fa-chevron_right
 error_symbol = "[\uf00d \uf054](bold red)"  # \uf00d: nf-fa-remove
 
 [directory]
-style = "bg:#61AFEF"
+style = "fg:black bg:#61AFEF"
 format = "[ $path ]($style)"
 truncate_to_repo = false
 truncation_length = 0
@@ -61,7 +61,7 @@ always_show_remote = false
 format = "[ $symbol $branch(:$remote_branch) ]($style)"
 # symbol = " "
 symbol = "\uf418"  # octicons git_branch symbol
-style = "bg:#98C379"
+style = "fg:black bg:#98C379"
 truncation_length = 9223372036854775807
 truncation_symbol = "…"
 only_attached = false
@@ -76,7 +76,7 @@ tag_disabled = true
 tag_max_candidates = 0
 tag_symbol = " \uf412 "  # nf-oct-tag
 disabled = false
-style = "bg:#98C379"
+style = "fg:black bg:#98C379"
 
 [git_state]
 rebase = "REBASING"
@@ -87,7 +87,7 @@ bisect = "BISECTING"
 am = "AM"
 am_or_rebase = "AM/REBASE"
 # style = "bold yellow"
-style = "bg:#98C379"
+style = "fg:black bg:#98C379"
 format = '[\($state( $progress_current/$progress_total)\) ]($style)'
 disabled = false
 
@@ -114,11 +114,11 @@ staged = "+ "
 renamed = "» "
 deleted = "✘ "
 # style = "bold red"
-style = "bg:#98C379"
+style = "fg:black bg:#98C379"
 ignore_submodules = false
 disabled = false
 
 [docker_context]
 symbol = "\uf308"  # nf-linux-docker
-style = "bg:#E06C75"
+style = "fg:black bg:#E06C75"
 format = '[ $symbol $context ]($style)$path'

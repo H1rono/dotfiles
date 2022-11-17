@@ -2,7 +2,7 @@
 
 my dotfiles
 
-## tested environment(s)
+## tested devices
 
 - MacBook Air (Apple M1 Sillicon)
     - OS: Ventura 13.0

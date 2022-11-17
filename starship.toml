@@ -1,46 +1,124 @@
+# ref:
+# starship configuration reference: https://starship.rs/config/
+# inspired by Pastel Powerline Preset: https://starship.rs/presets/pastel-powerline.html
+# nerd font cheat sheet: https://www.nerdfonts.com/cheat-sheet?set=nf-custom-
+
+# #9A348E / #DA627D / #FCA17D / #86BBD8 / #06969A / #33658A  ... pastel powerline preset
+# #56B6C2 / #61AFEF / #C678DD / #98C379 / #E06C75 / #BE5046  ... piece of One Dark Pro color palette
+
+# \ue0b6: nf-ple-left_half_circle_thick
+# \ue0b4: nf-ple-right_half_circle_thick
+# \ue0b2: nf-pl-right_hard_divider
+# \ue0b0: nf-pl-left_hard_divider
 format = """
+[\ue0b6](#56B6C2)\
 $username\
-$hostname\
+[\ue0b4](bg:#61AFEF fg:#56B6C2)\
 $directory\
+[\ue0b4](fg:#61AFEF bg:#98C379)\
 $git_branch\
+$git_commit\
 $git_state\
 $git_status\
-$cmd_duration\
-$line_break\
-$python\
-$character"""
+$hg_branch\
+[\ue0b4](fg:#98C379 bg:#E06C75)\
+$docker_context\
+[\ue0b4](fg:#E06C75)
+$character
+"""
+add_newline = false
 
-[directory]
-style = "blue"
+[username]
+show_always = true
+style_user = "bg:#56B6C2"
+style_root = "bg:#56B6C2"
+format = '[$user ]($style)'
 
 [character]
-success_symbol = "[❯](purple)"
-error_symbol = "[❯](red)"
-vimcmd_symbol = "[❮](green)"
+format = "$symbol "
+success_symbol = "[\uf054](bold green)"     # \uf054: nf-fa-chevron_right
+error_symbol = "[\uf00d \uf054](bold red)"  # \uf00d: nf-fa-remove
+
+[directory]
+style = "bg:#61AFEF"
+format = "[ $path ]($style)"
+truncate_to_repo = false
+truncation_length = 0
+
+# Here is how you can shorten some long paths by text replacement
+# similar to mapped_locations in Oh My Posh:
+[directory.substitutions]
+"Desktop" = "\uf108 "    # nf-fa-desktop
+"Documents" = "\uf718 "  # nf-mdi-file_document
+"Downloads" = "\uf019 "  # nf-fa-download
+"Library" = "\ue28a "    # nf-fae-book_open
+"Movies" = "\uf008 "     # nf-fa-film
+"Music" = "\uf001 "      # nf-fa-music
+"Pictures" = "\uf03e "   # nf-fa-picture_o
 
 [git_branch]
-format = "[$branch]($style)"
-style = "bright-black"
+always_show_remote = false
+format = "[ $symbol $branch(:$remote_branch) ]($style)"
+# symbol = " "
+symbol = "\uf418"  # octicons git_branch symbol
+style = "bg:#98C379"
+truncation_length = 9223372036854775807
+truncation_symbol = "…"
+only_attached = false
+ignore_branches = []
+disabled = false
 
-[git_status]
-format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
-style = "cyan"
-conflicted = "​"
-untracked = "​"
-modified = "​"
-staged = "​"
-renamed = "​"
-deleted = "​"
-stashed = "≡"
+[git_commit]
+commit_hash_length = 7
+format = '[\($hash$tag\)]($style) '
+only_detached = true
+tag_disabled = true
+tag_max_candidates = 0
+tag_symbol = " \uf412 "  # nf-oct-tag
+disabled = false
+style = "bg:#98C379"
 
 [git_state]
-format = '\([$state( $progress_current/$progress_total)]($style)\) '
-style = "bright-black"
+rebase = "REBASING"
+merge = "MERGING"
+revert = "REVERTING"
+cherry_pick = "CHERRY-PICKING"
+bisect = "BISECTING"
+am = "AM"
+am_or_rebase = "AM/REBASE"
+# style = "bold yellow"
+style = "bg:#98C379"
+format = '[\($state( $progress_current/$progress_total)\) ]($style)'
+disabled = false
 
-[cmd_duration]
-format = "[$duration]($style) "
-style = "yellow"
+[git_metrics]
+added_style = "fg:bold green bg:#98C379"
+deleted_style = "fg:bold red bg:#98C379"
+only_nonzero_diffs = true
+format = "([+$added ]($added_style))([-$deleted ]($deleted_style))"
+disabled = false
 
-[python]
-format = "[$virtualenv]($style) "
-style = "bright-black"
+[git_status]
+# format = '([\[$all_status$ahead_behind\]]($style) )'
+format = '[\[$all_status$ahead_behind\] ]($style)'
+conflicted = "= "
+ahead = "⇡ "
+behind = "⇣ "
+diverged = "⇕ "
+up_to_date = "\uf021 "  # nf-fa-refresh
+untracked = "? "
+stashed = "$ "
+modified = "* "
+# modified = "\uf5c8"  # nf-mdi-border_color
+staged = "+ "
+renamed = "» "
+deleted = "✘ "
+# style = "bold red"
+style = "bg:#98C379"
+ignore_submodules = false
+disabled = false
+
+[docker_context]
+symbol = "\uf308"  # nf-linux-docker
+style = "bg:#E06C75"
+format = '[ $symbol $context ]($style)$path'

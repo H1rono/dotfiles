@@ -9,7 +9,7 @@ my dotfiles
 - Raspberry Pi 4B
     - OS: Raspberry Pi OS
 
-## software structure
+## environment
 
 - shell: [Zsh](https://www.zsh.org)
 - terminal emulator: [WezTerm](https://wezfurlong.org/wezterm/)([GitHub](https://github.com/wez/wezterm))
@@ -18,14 +18,15 @@ my dotfiles
     - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
 - prompt customizing: [Starship](https://starship.rs/ja-jp/)
 - editor: [Neovim](https://neovim.io/)
+- font: [FirgeNerd Console](https://github.com/yuru7/Firge)
 
 ## files' descriptions
 
 ```
 dotfiles
-├── install.sh        -- install script of dotfiles, tested only in Raspberry Pi
 ├── LICENSE           -- GPL-3.0 license
 ├── README.md         -- this file
+├── install.sh        -- install script of dotfiles, tested only in Raspberry Pi
 ├── nvim
 │   └── init.vim      -- Neovim startup script
 ├── sheldon

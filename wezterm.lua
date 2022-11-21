@@ -27,10 +27,12 @@ return {
                 saturation = 1.0,
                 brightness = 0.5,
             },
+            vertical_align = "Middle",
             horizontal_align = "Center",
-            width = "100%",
-            height = "100%",
+            width = "Cover",
+            height = "Cover",
         },
     },
+    --text_background_opacity = 0.7,
 }
 

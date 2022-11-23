@@ -12,11 +12,11 @@ my dotfiles
 ## environment
 
 - shell: [Zsh](https://www.zsh.org)
-- terminal emulator: [WezTerm](https://wezfurlong.org/wezterm/)([GitHub](https://github.com/wez/wezterm))
-- Zsh plugin manager: [Sheldon](https://github.com/rossmacarthur/sheldon)
+- terminal emulator: [WezTerm](https://wezfurlong.org/wezterm/) ([GitHub](https://github.com/wez/wezterm))
+- Zsh plugin manager: [Sheldon](https://sheldon.cli.rs/) ([GitHub](https://github.com/rossmacarthur/sheldon))
     - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
     - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
-- prompt customizing: [Starship](https://starship.rs/ja-jp/)
+- prompt customizing: [Starship](https://starship.rs/ja-jp/) ([GitHub](https://github.com/starship/starship))
 - editor: [Neovim](https://neovim.io/)
 - font: [FirgeNerd Console](https://github.com/yuru7/Firge)
 

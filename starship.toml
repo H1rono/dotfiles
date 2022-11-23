@@ -11,19 +11,18 @@
 # \ue0b2: nf-pl-right_hard_divider
 # \ue0b0: nf-pl-left_hard_divider
 format = """
-[\ue0b6](#56B6C2)\
+[\ue0b2](fg:#56B6C2)\
 $username\
-[\ue0b4](bg:#61AFEF fg:#56B6C2)\
+[\ue0b0](fg:#56B6C2 bg:#282C34)\
+[\ue0b0](fg:#282C34 bg:#61AFEF)\
 $directory\
-[\ue0b4](fg:#61AFEF bg:#98C379)\
-$git_branch\
-$git_commit\
-$git_state\
-$git_status\
-$hg_branch\
-[\ue0b4](fg:#98C379 bg:#E06C75)\
+[\ue0b0](fg:#61AFEF bg:#282C34)\
+[\ue0b0](fg:#282C34 bg:#98C379)\
+$git_branch$git_commit$git_state$git_status$hg_branch\
+[\ue0b0](fg:#98C379 bg:#282C34)\
+[\ue0b0](fg:#282C34 bg:#E06C75)\
 $docker_context\
-[\ue0b4](fg:#E06C75)
+[\ue0b0](fg:#E06C75)
 $character
 """
 add_newline = false
@@ -32,7 +31,7 @@ add_newline = false
 show_always = true
 style_user = "fg:black bg:#56B6C2"
 style_root = "fg:black bg:#56B6C2"
-format = '[$user ]($style)'
+format = '[ $user ]($style)'
 
 [character]
 format = "$symbol "

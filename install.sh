@@ -5,7 +5,7 @@ dest="${1:-$HOME}"
 
 echo "install dotfiles from \`$src\` into \`$dest\` ..."
 
-function install() {
+function setlink() {
 	local src="$1"
 	local dest="$2"
 	if [ -e "$dest" ]; then
@@ -16,17 +16,17 @@ function install() {
 	ln -s "$src" "$dest"
 }
 
-install "$src/zshrc" "$dest/.zshrc"
-install "$src/wezterm.lua" "$dest/.wezterm.lua"
+setlink "$src/zshrc" "$dest/.zshrc"
+setlink "$src/wezterm.lua" "$dest/.wezterm.lua"
 echo "mkdir -p \"$dest/.config\""
 mkdir -p "$dest/.config"
-install "$src/starship.toml" "$dest/.config/starship.toml"
+setlink "$src/starship.toml" "$dest/.config/starship.toml"
 echo "mkdir -p \"$dest/.config/nvim\""
 mkdir -p "$dest/.config/nvim"
-install "$src/nvim/init.vim" "$dest/.config/nvim/init.vim"
+setlink "$src/nvim/init.vim" "$dest/.config/nvim/init.vim"
 echo "mkdir -p \"$dest/.config/sheldon\""
 mkdir -p "$dest/.config/sheldon"
-install "$src/sheldon/plugins.toml" "$dest/.config/sheldon/plugins.toml"
+setlink "$src/sheldon/plugins.toml" "$dest/.config/sheldon/plugins.toml"
 
 echo "done."
 

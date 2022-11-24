@@ -10,10 +10,14 @@
 #     fg: #56B6C2 / #61AFEF / #C678DD / #98C379 / #E06C75 / #BE5046
 #     bg: #282C34
 
-# \ue0b6: nf-ple-left_half_circle_thick
-# \ue0b4: nf-ple-right_half_circle_thick
-# \ue0b2: nf-pl-right_hard_divider <
 # \ue0b0: nf-pl-left_hard_divider >
+# \ue0b1: nf-pl-left_soft_divider >
+# \ue0b2: nf-pl-right_hard_divider <
+# \ue0b3: nf-pl-right_soft_divider <
+# \ue0b4: nf-ple-right_half_circle_thick >
+# \ue0b5: nf-ple-right_half_circle_thin >
+# \ue0b6: nf-ple-left_half_circle_thick <
+# \ue0b7: nf-ple-left_half_circle_thin <
 # \ue0b8: nf-ple-lower_left_triangle
 # \ue0ba: nf-ple-lower_right_triangle
 # \ue0bc: nf-ple-upper_left_triangle

@@ -103,13 +103,6 @@ style = "fg:black bg:#98C379"
 format = '[\($state( $progress_current/$progress_total)\) ]($style)'
 disabled = false
 
-[git_metrics]
-added_style = "fg:bold green bg:#98C379"
-deleted_style = "fg:bold red bg:#98C379"
-only_nonzero_diffs = true
-format = "([+$added ]($added_style))([-$deleted ]($deleted_style))"
-disabled = false
-
 [git_status]
 # format = '([\[$all_status$ahead_behind\]]($style) )'
 format = '[\[$all_status$ahead_behind\] ]($style)'

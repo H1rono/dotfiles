@@ -1,6 +1,7 @@
 #!/bin/bash
 
-src=$(pwd)
+cd "$(dirname "$0")"
+src="$(pwd)"
 dest="${1:-$HOME}"
 
 echo "install dotfiles from \`$src\` into \`$dest\` ..."

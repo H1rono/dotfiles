@@ -27,6 +27,7 @@ setlink "$src/nvim/init.vim" "$dest/.config/nvim/init.vim"
 echo "mkdir -p \"$dest/.config/sheldon\""
 mkdir -p "$dest/.config/sheldon"
 setlink "$src/sheldon/plugins.toml" "$dest/.config/sheldon/plugins.toml"
+setlink "$src/tmux.conf" "$dest/.tmux.conf"
 
 echo "done."
 

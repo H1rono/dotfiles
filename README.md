@@ -17,6 +17,9 @@ my dotfiles
     - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
     - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
 - prompt customizing: [Starship](https://starship.rs/ja-jp/) ([GitHub](https://github.com/starship/starship))
+- terminal multiplexer: [tmux](https://github.com/tmux/tmux)
+- tmux plugin manager: [tpm](https://github.com/tmux-plugins/tpm)
+    - [odedlaz/tmux-onedark-theme](https://github.com/odedlaz/tmux-onedark-theme)
 - editor in terminal: [Neovim](https://neovim.io/)
 - font: [FirgeNerd Console](https://github.com/yuru7/Firge)
 
@@ -32,6 +35,7 @@ dotfiles
 ├── sheldon
 │   └── plugins.toml  -- Sheldon plugin information
 ├── starship.toml     -- Starship configuration
+├── tmux.conf         -- tmux configuration
 ├── wezterm.lua       -- WezTerm configuration
 └── zshrc             -- Zsh startup script
 ```

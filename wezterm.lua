@@ -13,7 +13,7 @@ return {
     },
     background = {
         {   -- base background color
-            source = { Color = "black" },
+            source = { Color = "#282C34" },
             opacity = 1.0,
             width = "100%",
             height = "100%",
@@ -33,6 +33,5 @@ return {
             height = "Cover",
         },
     },
-    --text_background_opacity = 0.7,
 }
 

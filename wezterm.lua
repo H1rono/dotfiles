@@ -3,14 +3,14 @@ local os = require 'os'
 local io = require 'io'
 
 -- get environment variables
-local user = os.getenv("USER") or "h1rono"
-local home = os.getenv("HOME") or ("/home/" .. user)
-local xdg_config_home = os.getenv("XDG_CONFIG_HOME") or (home .. "/.config")
+local user --[[string]] = os.getenv("USER") or "h1rono"
+local home --[[string]] = os.getenv("HOME") or ("/home/" .. user)
+local xdg_config_home --[[string]] = os.getenv("XDG_CONFIG_HOME") or (home .. "/.config")
 
 -- fn(string) -> boolean
 local function file_exists(name)
-    local handle = io.open(name, "r")
-    local res = handle ~= nil
+    local handle --[[file]] = io.open(name, "r")
+    local res --[[boolean]] = handle ~= nil
     if res then
         handle:close()
     end
@@ -20,10 +20,10 @@ end
 -- type WezTermBackgroundLayer
 -- ... https://wezfurlong.org/wezterm/config/lua/config/background.html#layer-definition
 
--- fn(nil | array) -> nil | WezTermBackgroundLayer
+-- fn(nil | array<string>) -> nil | WezTermBackgroundLayer
 local function bg_image(candidates)
     -- candidates is an array of background image paths
-    local bg_image_candidates = candidates or {
+    local bg_image_candidates --[[array<string>]] = candidates or {
         home .. "/Pictures/bg.jpeg",
         home .. "/Pictures/bg.jpg",
         home .. "/.bg.jpeg",
@@ -31,9 +31,9 @@ local function bg_image(candidates)
         xdg_config_home .. "/bg.jpeg",
         xdg_config_home .. "/bg.jpg"
     }
-    local bg_image_path
+    local bg_image_path --[[nil | string]]
     for i = 1, #bg_image_candidates do
-        local bg_candidate = bg_image_candidates[i]
+        local bg_candidate --[[string]] = bg_image_candidates[i]
         if file_exists(bg_candidate) then
             bg_image_path = bg_candidate
             break
@@ -83,4 +83,3 @@ return {
     },
     background = make_background()
 }
-

@@ -16,7 +16,7 @@ my dotfiles
 - Zsh plugin manager: [Sheldon](https://sheldon.cli.rs/) ([GitHub](https://github.com/rossmacarthur/sheldon))
     - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
     - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
-- prompt customizing: [Starship](https://starship.rs/ja-jp/) ([GitHub](https://github.com/starship/starship))
+- prompt customizing: [Starship](https://starship.rs/) ([GitHub](https://github.com/starship/starship))
 - terminal multiplexer: [tmux](https://github.com/tmux/tmux)
 - tmux plugin manager: [tpm](https://github.com/tmux-plugins/tpm)
     - [odedlaz/tmux-onedark-theme](https://github.com/odedlaz/tmux-onedark-theme)
@@ -39,3 +39,7 @@ dotfiles
 ├── wezterm.lua       -- WezTerm configuration
 └── zshrc             -- Zsh startup script
 ```
+
+## Article/link(s) about this repo
+
+- [オレオレdotfilesを作った | 東京工業大学デジタル創作同好会traP](https://trap.jp/post/1737/)

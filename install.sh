@@ -7,14 +7,14 @@ dest="${1:-$HOME}"
 echo "install dotfiles from \`$src\` into \`$dest\` ..."
 
 function setlink() {
-	local src="$1"
-	local dest="$2"
-	if [ -e "$dest" ]; then
-		echo "found \`$dest\`, move it into \`$dest.old\`"
-		mv "$dest" "$dest.old"
-	fi
-	echo "create a symbolic link to \`$src\` at \`$dest\`"
-	ln -s "$src" "$dest"
+    local src="$1"
+    local dest="$2"
+    if [ -e "$dest" ]; then
+        echo "found \`$dest\`, move it into \`$dest.old\`"
+        mv "$dest" "$dest.old"
+    fi
+    echo "create a symbolic link to \`$src\` at \`$dest\`"
+    ln -s "$src" "$dest"
 }
 
 setlink "$src/zshrc" "$dest/.zshrc"

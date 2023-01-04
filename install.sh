@@ -1,34 +1,38 @@
 #!/bin/bash
 
 cd "$(dirname "$0")"
-src="$(pwd)"
-dest="${1:-$HOME}"
 
-echo "install dotfiles from \`$src\` into \`$dest\` ..."
+SRC_DIR="$(pwd)"
+DEST_DIR="${1:-$HOME}"
+
+echo "install dotfiles from \`$SRC_DIR\` into \`$DEST_DIR\` ..."
 
 function setlink() {
-    local src="$1"
-    local dest="$2"
-    if [ -e "$dest" ]; then
-        echo "found \`$dest\`, move it into \`$dest.old\`"
-        mv "$dest" "$dest.old"
+    local SRC="$1"
+    local DEST="$2"
+    if [ -f "$DEST" ]; then
+        echo "found \`$DEST\`, move it into \`$DEST.old\`"
+        mv "$DEST" "$DEST.old"
     fi
-    echo "create a symbolic link to \`$src\` at \`$dest\`"
-    ln -s "$src" "$dest"
+    echo "create a symbolic link to \`$SRC\` at \`$DEST\`"
+    ln -s "$SRC" "$DEST"
 }
 
-setlink "$src/zshrc" "$dest/.zshrc"
-setlink "$src/wezterm.lua" "$dest/.wezterm.lua"
-echo "mkdir -p \"$dest/.config\""
-mkdir -p "$dest/.config"
-setlink "$src/starship.toml" "$dest/.config/starship.toml"
-echo "mkdir -p \"$dest/.config/nvim\""
-mkdir -p "$dest/.config/nvim"
-setlink "$src/nvim/init.vim" "$dest/.config/nvim/init.vim"
-echo "mkdir -p \"$dest/.config/sheldon\""
-mkdir -p "$dest/.config/sheldon"
-setlink "$src/sheldon/plugins.toml" "$dest/.config/sheldon/plugins.toml"
-setlink "$src/tmux.conf" "$dest/.tmux.conf"
+setlink "$SRC_DIR/zshrc" "$DEST_DIR/.zshrc"
+setlink "$SRC_DIR/wezterm.lua" "$DEST_DIR/.wezterm.lua"
+setlink "$SRC_DIR/tmux.conf" "$DEST_DIR/.tmux.conf"
+
+echo "mkdir -p \"$DEST_DIR/.config\""
+mkdir -p "$DEST_DIR/.config"
+setlink "$SRC_DIR/config/starship.toml" "$DEST_DIR/.config/starship.toml"
+
+echo "mkdir -p \"$DEST_DIR/.config/nvim\""
+mkdir -p "$DEST_DIR/.config/nvim"
+setlink "$SRC_DIR/config/nvim/init.vim" "$DEST_DIR/.config/nvim/init.vim"
+
+echo "mkdir -p \"$DEST_DIR/.config/sheldon\""
+mkdir -p "$DEST_DIR/.config/sheldon"
+setlink "$SRC_DIR/config/sheldon/plugins.toml" "$DEST_DIR/.config/sheldon/plugins.toml"
 
 echo "done."
 

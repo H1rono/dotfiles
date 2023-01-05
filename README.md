@@ -26,18 +26,20 @@ my dotfiles
 ## files' descriptions
 
 ```
-dotfiles
-├── LICENSE           -- GPL-3.0 license
-├── README.md         -- this file
-├── install.sh        -- install script of dotfiles, tested only in Raspberry Pi
-├── nvim
-│   └── init.vim      -- Neovim startup script
-├── sheldon
-│   └── plugins.toml  -- Sheldon plugin information
-├── starship.toml     -- Starship configuration
-├── tmux.conf         -- tmux configuration
-├── wezterm.lua       -- WezTerm configuration
-└── zshrc             -- Zsh startup script
+dotfiles                  -- .gitignore
+├── .gitignore
+├── LICENSE               -- GPL-3.0 license
+├── README.md             -- this file
+├── config
+│   ├── nvim
+│   │   └── init.vim      -- Neovim startup script
+│   ├── sheldon
+│   │   └── plugins.toml  -- Sheldon plugin information
+│   └── starship.toml     -- Starship configuration
+├── install.sh            -- install script of dotfiles
+├── tmux.conf             -- tmux configuration
+├── wezterm.lua           -- WezTerm configuration
+└── zshrc                 -- Zsh startup script
 ```
 
 ## Article/link(s) about this repo

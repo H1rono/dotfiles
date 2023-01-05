@@ -1,38 +1,74 @@
 #!/bin/bash
 
-cd "$(dirname "$0")"
+if [ -f .env ] ; then
+    # ref: https://qiita.com/reflet/items/2caf9dbf0e3f775276ec
+    export $(cat .env | grep -v '^#' | xargs)
+else
+    touch .env
+fi
+
+DEST_DIR="${1:-${LAST_DEST_DIR:-$HOME}}"
+mkdir -p "$DEST_DIR"
+DEST_DIR=`readlink -f "$DEST_DIR"`
+
+cd `dirname "$0"`
 
 SRC_DIR="$(pwd)"
-DEST_DIR="${1:-$HOME}"
 
-echo "install dotfiles from \`$SRC_DIR\` into \`$DEST_DIR\` ..."
+DOTFILES_STATUS="${DOTFILES_STATUS:-not_installed}"
+[ "$DEST_DIR" != "$LAST_DEST_DIR" ] && export DOTFILES_STATUS="not_installed"
 
-function setlink() {
-    local SRC="$1"
-    local DEST="$2"
-    if [ -f "$DEST" ]; then
-        echo "found \`$DEST\`, move it into \`$DEST.old\`"
-        mv "$DEST" "$DEST.old"
+# for each line: $SRC_DIR/$line[0] -> $DEST_DIR/$line[1]
+INSTALL_MAPPINGS="
+zshrc                       .zshrc
+wezterm.lua                 .wezterm.lua
+tmux.conf                   .tmux.conf
+config/starship.toml        .config/starship.toml
+config/nvim/init.vim        .config/nvim/init.vim
+config/sheldon/plugins.toml .config/sheldon/plugins.toml
+"
+
+case "$DOTFILES_STATUS" in
+    "not_installed" )
+        echo "this dotfiles repository is not installed, install dotfiles from \`$SRC_DIR\` into \`$DEST_DIR\`"
+    ;;
+    "installed" )
+        echo "this dotfiles repository is already installed, update symlinks from \`$SRC_DIR\` into \`$DEST_DIR\`"
+    ;;
+    * )
+        echo "ERROR! unexpected environment variable DOTFILES_STATUS='$DOTFILES_STATUS', please check the content of .env"
+        exit 1
+    ;;
+esac
+
+function check_installed() {
+    if   [ -L "$1" ] ; then
+        echo "\`$1\` is a simbolic link, unlink this"
+        unlink "$1"
+    elif [ -f "$1" ] ; then
+        echo "\`$1\` is a file, move to \`$1.old\` (if \`$1.old\` exists, remove it)"
+        [ -e "$1.old" ] && rm "$1.old"
+        mv "$1" "$1.old"
     fi
-    echo "create a symbolic link to \`$SRC\` at \`$DEST\`"
-    ln -s "$SRC" "$DEST"
 }
 
-setlink "$SRC_DIR/zshrc" "$DEST_DIR/.zshrc"
-setlink "$SRC_DIR/wezterm.lua" "$DEST_DIR/.wezterm.lua"
-setlink "$SRC_DIR/tmux.conf" "$DEST_DIR/.tmux.conf"
+echo "$INSTALL_MAPPINGS" | while read MAP
+do
+    [ ! -n "$MAP" ] && continue
+    ARGS=($MAP)
+    SRC="$SRC_DIR/${ARGS[0]}"
+    DEST="$DEST_DIR/${ARGS[1]}"
+    DEST_D=`dirname "$DEST"`
+    echo "mkdir -p '$DEST_D'"
+    mkdir -p "$DEST_D"
+    check_installed "$DEST"
+    echo "create a symbolic link to \`$SRC\` at \`$DEST\`"
+    ln -s "$SRC" "$DEST"
+done
 
-echo "mkdir -p \"$DEST_DIR/.config\""
-mkdir -p "$DEST_DIR/.config"
-setlink "$SRC_DIR/config/starship.toml" "$DEST_DIR/.config/starship.toml"
+echo "update $SRC/.env"
 
-echo "mkdir -p \"$DEST_DIR/.config/nvim\""
-mkdir -p "$DEST_DIR/.config/nvim"
-setlink "$SRC_DIR/config/nvim/init.vim" "$DEST_DIR/.config/nvim/init.vim"
-
-echo "mkdir -p \"$DEST_DIR/.config/sheldon\""
-mkdir -p "$DEST_DIR/.config/sheldon"
-setlink "$SRC_DIR/config/sheldon/plugins.toml" "$DEST_DIR/.config/sheldon/plugins.toml"
+echo "DOTFILES_STATUS=installed" > .env
+echo "LAST_DEST_DIR='$DEST_DIR'" >> .env
 
 echo "done."
-

@@ -42,6 +42,23 @@ dotfiles                  -- .gitignore
 └── zshrc                 -- Zsh startup script
 ```
 
+## About `install.sh`
+
+This script (currently) only makes or updates symbolic links from configuration scripts in this repository to corresponding ones in designated location (`$HOME` by default). If you want to make symbolic links into `$HOME` directory, just run:
+
+```bash
+$ ./install.sh
+```
+
+If you want to make them into specific directory, then:
+
+```bash
+# in absolute:
+$ ./install.sh /path/to/dir
+# or in relative:
+$ ./install.sh ./some/dir
+```
+
 ## Article/link(s) about this repo
 
 - [オレオレdotfilesを作った | 東京工業大学デジタル創作同好会traP](https://trap.jp/post/1737/)

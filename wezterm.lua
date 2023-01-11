@@ -61,8 +61,9 @@ local function get_font_fallback(candidates, all_fonts)
     return res
 end
 
+-- fn() -> wezterm.font_with_fallback
 local function make_font()
-    local all_fonts --[[array<string>]] = installed_fonts()
+    local all_fonts --[[array<string>]] = wezterm.GLOBAL.fonts or installed_fonts()
     local candidates --[[array<string>]] = {
         -- my favorite fonts
         "SF Mono",
@@ -136,6 +137,8 @@ local function make_background()
     end
     return res
 end
+
+wezterm.GLOBAL.fonts = wezterm.GLOBAL.fonts or installed_fonts()
 
 return {
     font = make_font(),

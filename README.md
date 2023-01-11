@@ -44,13 +44,13 @@ dotfiles                  -- .gitignore
 
 ## About `install.sh`
 
-This script (currently) only makes or updates symbolic links from configuration scripts in this repository to corresponding ones in designated location (`$HOME` by default). If you want to make symbolic links into `$HOME` directory, just run:
+This script (currently) only makes or updates symbolic links from configuration files in this repository to corresponding ones in the specified directory (`$HOME` by default). If you want to make the links into `$HOME` directory, just run:
 
 ```bash
 $ ./install.sh
 ```
 
-If you want to make them into specific directory, then:
+If you want to make them into a specific directory, then:
 
 ```bash
 # in absolute:

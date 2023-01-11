@@ -2,14 +2,16 @@
 
 my dotfiles
 
-## tested devices
+## Environment
 
 - MacBook Air (Apple M1 Sillicon)
-    - OS: Ventura 13.0
+    - OS: macOS Ventura 13
 - Raspberry Pi 4B
     - OS: Raspberry Pi OS
+- else
+    - OS: Ubuntu Desktop 22.04
 
-## environment
+## Softwares
 
 - shell: [Zsh](https://www.zsh.org)
 - terminal emulator: [WezTerm](https://wezfurlong.org/wezterm/) ([GitHub](https://github.com/wez/wezterm))
@@ -23,11 +25,11 @@ my dotfiles
 - editor in terminal: [Neovim](https://neovim.io/)
 - font: [FirgeNerd Console](https://github.com/yuru7/Firge)
 
-## files' descriptions
+## Files' descriptions
 
 ```
-dotfiles                  -- .gitignore
-├── .gitignore
+dotfiles
+├── .gitignore            -- .gitignore
 ├── LICENSE               -- GPL-3.0 license
 ├── README.md             -- this file
 ├── config

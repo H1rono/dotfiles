@@ -25,6 +25,8 @@ my dotfiles
 - editor in terminal: [Neovim](https://neovim.io/) ([GitHub](https://github.com/neovim/neovim))
 - font: [FirgeNerd Console](https://github.com/yuru7/Firge)
 
+Please see [manual installation of dependencies](#manual-installation-of-dependencies) to install above tools manually.
+
 ## Files' descriptions
 
 ```
@@ -60,6 +62,63 @@ $ ./install.sh /path/to/dir
 # or in relative:
 $ ./install.sh ./some/dir
 ```
+
+## Manual installation of dependencies
+
+### in macOS
+
+with [Homebrew](https://brew.sh/):
+
+```bash
+# install brew
+$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# install dependencies (zsh may be unnecessary)
+$ brew install zsh sheldon starship tmux neovim
+$ brew tap wez/wezterm
+$ brew install --cask wez/wezterm/wezterm
+```
+
+### in Ubuntu(-like) OS
+
+with [apt](https://wiki.debian.org/Apt) and [cargo](https://doc.rust-lang.org/cargo/):
+
+```bash
+# install zsh, tmux, and neovim
+$ sudo apt install zsh tmux neovim
+# install rust
+$ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+# install dependencies
+$ cargo install sheldon starship
+# install wezterm (curl is required)
+$ curl -LO https://github.com/wez/wezterm/releases/download/20221119-145034-49b9839f/wezterm-20221119-145034-49b9839f.Ubuntu22.04.deb
+```
+
+### general operation
+
+This is required after OS-specific operation. To install tpm, run:
+
+```bash
+$ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
+
+To install FirgeNerd, please follow instructions below.
+
+- download `FirgeNerd_[version].zip` file from [Releases · yuru7/Firge](https://github.com/yuru7/Firge/releases)
+- unzip the zip file
+- install `.ttf` files with font manager
+
+### reference
+
+- [zsh — Homebrew Formulae](https://formulae.brew.sh/formula/zsh)
+- wezterm
+    - [macOS - Wez's Terminal Emulator](https://wezfurlong.org/wezterm/install/macos.html)
+    - [Linux - Wez's Terminal Emulator](https://wezfurlong.org/wezterm/install/linux.html)
+- [📦 Installation - sheldon docs](https://sheldon.cli.rs/Installation.html)
+- [Starship#🚀-installation](https://starship.rs/guide/#%F0%9F%9A%80-installation)
+- [Installing · tmux/tmux Wiki](https://github.com/tmux/tmux/wiki/Installing)
+- [Installing Neovim · neovim/neovim Wiki](https://github.com/neovim/neovim/wiki/Installing-Neovim)
+- [tmux-plugins/tpm: Tmux Plugin Manager#installation](https://github.com/tmux-plugins/tpm#installation)
+- [Releases · yuru7/Firge](https://github.com/yuru7/Firge/releases)
 
 ## Article/link(s) about this repo
 

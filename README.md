@@ -11,9 +11,9 @@ my dotfiles
 - else
     - OS: Ubuntu Desktop 22.04
 
-## Softwares
+## Dependencies
 
-- shell: [Zsh](https://www.zsh.org)
+- shell: [Zsh](https://www.zsh.org) ([GitHub mirror](https://github.com/zsh-users/zsh))
 - terminal emulator: [WezTerm](https://wezfurlong.org/wezterm/) ([GitHub](https://github.com/wez/wezterm))
 - Zsh plugin manager: [Sheldon](https://sheldon.cli.rs/) ([GitHub](https://github.com/rossmacarthur/sheldon))
     - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
@@ -22,7 +22,7 @@ my dotfiles
 - terminal multiplexer: [tmux](https://github.com/tmux/tmux)
 - tmux plugin manager: [tpm](https://github.com/tmux-plugins/tpm)
     - [odedlaz/tmux-onedark-theme](https://github.com/odedlaz/tmux-onedark-theme)
-- editor in terminal: [Neovim](https://neovim.io/)
+- editor in terminal: [Neovim](https://neovim.io/) ([GitHub](https://github.com/neovim/neovim))
 - font: [FirgeNerd Console](https://github.com/yuru7/Firge)
 
 ## Files' descriptions

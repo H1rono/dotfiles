@@ -89,9 +89,13 @@ $ sudo apt install zsh tmux neovim
 $ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 # install dependencies
 $ cargo install sheldon starship
-# install wezterm (curl is required)
+# install WezTerm (curl is required)
 $ curl -LO https://github.com/wez/wezterm/releases/download/20221119-145034-49b9839f/wezterm-20221119-145034-49b9839f.Ubuntu22.04.deb
+$ sudo apt-get install ./wezterm-20221119-145034-49b9839f.Ubuntu22.04.deb
+$ rm ./wezterm-20221119-145034-49b9839f.Ubuntu22.04.deb
 ```
+
+Since the commands above works in only Ubuntu 22.04, please check [Linux installation](https://wezfurlong.org/wezterm/install/linux.html).
 
 ### general operation
 
@@ -110,7 +114,7 @@ To install FirgeNerd, please follow instructions below.
 ### reference
 
 - [zsh — Homebrew Formulae](https://formulae.brew.sh/formula/zsh)
-- wezterm
+- WezTerm
     - [macOS - Wez's Terminal Emulator](https://wezfurlong.org/wezterm/install/macos.html)
     - [Linux - Wez's Terminal Emulator](https://wezfurlong.org/wezterm/install/linux.html)
 - [📦 Installation - sheldon docs](https://sheldon.cli.rs/Installation.html)

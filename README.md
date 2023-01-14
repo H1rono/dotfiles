@@ -95,7 +95,7 @@ $ sudo apt-get install ./wezterm-20221119-145034-49b9839f.Ubuntu22.04.deb
 $ rm ./wezterm-20221119-145034-49b9839f.Ubuntu22.04.deb
 ```
 
-Since the commands above works in only Ubuntu 22.04, please check [Linux installation](https://wezfurlong.org/wezterm/install/linux.html).
+Since the commands above to install WezTerm works in only Ubuntu 22.04, please check [Linux installation](https://wezfurlong.org/wezterm/install/linux.html).
 
 ### general operation
 

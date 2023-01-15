@@ -16,6 +16,8 @@ my dotfiles
 - shell: [Zsh](https://www.zsh.org) ([GitHub mirror](https://github.com/zsh-users/zsh))
 - terminal emulator: [WezTerm](https://wezfurlong.org/wezterm/) ([GitHub](https://github.com/wez/wezterm))
 - Zsh plugin manager: [Sheldon](https://sheldon.cli.rs/) ([GitHub](https://github.com/rossmacarthur/sheldon))
+    - [zsh-defer](https://github.com/romkatv/zsh-defer)
+    - [zsh-completions](https://github.com/zsh-users/zsh-completions)
     - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
     - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
 - prompt customizing: [Starship](https://starship.rs/) ([GitHub](https://github.com/starship/starship))

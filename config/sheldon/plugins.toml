@@ -19,6 +19,13 @@ shell = "zsh"
 # [plugins.base16]
 # github = "chriskempson/base16-shell"
 
+# https://docs.brew.sh/Shell-Completion#configuring-completions-in-zsh
+[plugins.brew-completion]
+inline = 'type brew &>/dev/null && FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"'
+
+[plugins.zsh-completions]
+github = "zsh-users/zsh-completions"
+
 [plugins.zsh-syntax-highlighting]
 github = "zsh-users/zsh-syntax-highlighting"
 
@@ -31,3 +38,5 @@ inline = 'alias ls="/bin/ls --color=always"'
 [plugins.starship]
 inline = 'eval "$(starship init zsh)"'
 
+[plugins.compinit]
+inline = "autoload -Uz compinit && compinit"

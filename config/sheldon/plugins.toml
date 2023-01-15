@@ -12,12 +12,19 @@
 
 shell = "zsh"
 
+# https://sheldon.cli.rs/Examples.html#deferred-loading-of-plugins-in-zsh
+[templates]
+defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}"
+
 [plugins]
 
 # For example:
 #
 # [plugins.base16]
 # github = "chriskempson/base16-shell"
+
+[plugins.zsh-defer]
+github = "romkatv/zsh-defer"
 
 # https://docs.brew.sh/Shell-Completion#configuring-completions-in-zsh
 [plugins.brew-completion]
@@ -39,4 +46,4 @@ inline = 'alias ls="/bin/ls --color=always"'
 inline = 'eval "$(starship init zsh)"'
 
 [plugins.compinit]
-inline = "autoload -Uz compinit && compinit"
+inline = "autoload -Uz compinit && zsh-defer compinit"

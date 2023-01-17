@@ -44,12 +44,7 @@ add_newline = false
 show_always = true
 style_user = "fg:black bg:#56B6C2"
 style_root = "fg:black bg:#56B6C2"
-format = '[ $user ]($style)'
-
-[character]
-format = "$symbol "
-success_symbol = "[\uf054](bold green)"     # \uf054: nf-fa-chevron_right
-error_symbol = "[\uf00d \uf054](bold red)"  # \uf00d: nf-fa-remove
+format = "[ $user ]($style)"
 
 [directory]
 style = "fg:black bg:#61AFEF"
@@ -57,21 +52,18 @@ format = "[ $path ]($style)"
 truncate_to_repo = false
 truncation_length = 0
 
-# Here is how you can shorten some long paths by text replacement
-# similar to mapped_locations in Oh My Posh:
 [directory.substitutions]
-"Desktop" = "\uf108 "    # nf-fa-desktop
+"Desktop"   = "\uf108 "  # nf-fa-desktop
 "Documents" = "\uf718 "  # nf-mdi-file_document
 "Downloads" = "\uf019 "  # nf-fa-download
-"Library" = "\ue28a "    # nf-fae-book_open
-"Movies" = "\uf008 "     # nf-fa-film
-"Music" = "\uf001 "      # nf-fa-music
-"Pictures" = "\uf03e "   # nf-fa-picture_o
+"Library"   = "\ue28a "  # nf-fae-book_open
+"Movies"    = "\uf008 "  # nf-fa-film
+"Music"     = "\uf001 "  # nf-fa-music
+"Pictures"  = "\uf03e "  # nf-fa-picture_o
 
 [git_branch]
 always_show_remote = false
 format = "[ $symbol $branch(:$remote_branch) ]($style)"
-# symbol = " "
 symbol = "\uf418"  # octicons git_branch symbol
 style = "fg:black bg:#98C379"
 truncation_length = 9223372036854775807
@@ -107,8 +99,8 @@ disabled = false
 # format = '([\[$all_status$ahead_behind\]]($style) )'
 format = '[\[$all_status$ahead_behind\] ]($style)'
 conflicted = "= "
-ahead = "⇡ "
-behind = "⇣ "
+ahead = "⇡"
+behind = "⇣"
 diverged = "⇕ "
 up_to_date = "\uf021 "  # nf-fa-refresh
 untracked = "? "
@@ -127,3 +119,8 @@ disabled = false
 symbol = "\uf308"  # nf-linux-docker
 style = "fg:black bg:#E06C75"
 format = '[ $symbol $context ]($style)$path'
+
+[character]
+format = "$symbol "
+success_symbol = "[\uf054](bold green)"     # \uf054: nf-fa-chevron_right
+error_symbol = "[\uf00d \uf054](bold red)"  # \uf00d: nf-fa-remove

@@ -10,19 +10,6 @@
 #     fg: #56B6C2 / #61AFEF / #C678DD / #98C379 / #E06C75 / #BE5046
 #     bg: #282C34
 
-# \ue0b0: nf-pl-left_hard_divider >
-# \ue0b1: nf-pl-left_soft_divider >
-# \ue0b2: nf-pl-right_hard_divider <
-# \ue0b3: nf-pl-right_soft_divider <
-# \ue0b4: nf-ple-right_half_circle_thick >
-# \ue0b5: nf-ple-right_half_circle_thin >
-# \ue0b6: nf-ple-left_half_circle_thick <
-# \ue0b7: nf-ple-left_half_circle_thin <
-# \ue0b8: nf-ple-lower_left_triangle
-# \ue0ba: nf-ple-lower_right_triangle
-# \ue0bc: nf-ple-upper_left_triangle
-# \ue0be: nf-ple-upper_right_triangle
-
 format = """
 $username[@](fg:#AAB2BF)$hostname$directory\
 $git_branch$git_commit$git_state$git_status$hg_branch\
@@ -51,18 +38,9 @@ truncate_to_repo = true
 truncation_length = 0
 truncation_symbol = "…/"
 
-[directory.substitutions]
-"Desktop"   = "\uf108 "  # nf-fa-desktop
-"Documents" = "\uf718 "  # nf-mdi-file_document
-"Downloads" = "\uf019 "  # nf-fa-download
-"Library"   = "\ue28a "  # nf-fae-book_open
-"Movies"    = "\uf008 "  # nf-fa-film
-"Music"     = "\uf001 "  # nf-fa-music
-"Pictures"  = "\uf03e "  # nf-fa-picture_o
-
 [git_branch]
 always_show_remote = false
-format = "[$symbol $branch(:$remote_branch)]($style) "
+format = "[$symbol$branch(:$remote_branch)]($style) "
 symbol = "\uf418"  # octicons git_branch symbol
 style = "fg:#98C379"
 truncation_length = 9223372036854775807

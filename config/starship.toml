@@ -24,33 +24,32 @@
 # \ue0be: nf-ple-upper_right_triangle
 
 format = """
-[\ue0b2](fg:#56B6C2)\
-$username\
-[\ue0b0](fg:#56B6C2 bg:#282C34)\
-[\ue0b0](fg:#282C34 bg:#61AFEF)\
-$directory\
-[\ue0b0](fg:#61AFEF bg:#282C34)\
-[\ue0b0](fg:#282C34 bg:#98C379)\
+$username[@](fg:#AAB2BF)$hostname$directory\
 $git_branch$git_commit$git_state$git_status$hg_branch\
-[\ue0b0](fg:#98C379 bg:#282C34)\
-[\ue0b0](fg:#282C34 bg:#E06C75)\
-$docker_context\
-[\ue0b0](fg:#E06C75)
+$docker_context
 $character
 """
 add_newline = false
 
 [username]
 show_always = true
-style_user = "fg:black bg:#56B6C2"
-style_root = "fg:black bg:#56B6C2"
-format = "[ $user ]($style)"
+style_user = "fg:#56B6C2"
+style_root = "fg:#E06C75"
+format = "[$user]($style)"
+
+[hostname]
+ssh_only = false
+format = "[$hostname]($style)"
+style = "fg:#56B6C2"
 
 [directory]
-style = "fg:black bg:#61AFEF"
-format = "[ $path ]($style)"
-truncate_to_repo = false
+style = "fg:#C678DD"
+read_only = "\uf023"  # nf-fa-lock
+read_only_style = "fg:#ABB2BF"
+format = "[$read_only]($read_only_style) [$path]($style) "
+truncate_to_repo = true
 truncation_length = 0
+truncation_symbol = "…/"
 
 [directory.substitutions]
 "Desktop"   = "\uf108 "  # nf-fa-desktop
@@ -63,9 +62,9 @@ truncation_length = 0
 
 [git_branch]
 always_show_remote = false
-format = "[ $symbol $branch(:$remote_branch) ]($style)"
+format = "[$symbol $branch(:$remote_branch)]($style) "
 symbol = "\uf418"  # octicons git_branch symbol
-style = "fg:black bg:#98C379"
+style = "fg:#98C379"
 truncation_length = 9223372036854775807
 truncation_symbol = "…"
 only_attached = false
@@ -80,7 +79,7 @@ tag_disabled = true
 tag_max_candidates = 0
 tag_symbol = " \uf412 "  # nf-oct-tag
 disabled = false
-style = "fg:black bg:#98C379"
+style = "fg:#98C379"
 
 [git_state]
 rebase = "REBASING"
@@ -90,8 +89,7 @@ cherry_pick = "CHERRY-PICKING"
 bisect = "BISECTING"
 am = "AM"
 am_or_rebase = "AM/REBASE"
-# style = "bold yellow"
-style = "fg:black bg:#98C379"
+style = "fg:#98C379"
 format = '[\($state( $progress_current/$progress_total)\) ]($style)'
 disabled = false
 
@@ -110,15 +108,14 @@ modified = "* "
 staged = "+ "
 renamed = "» "
 deleted = "✘ "
-# style = "bold red"
-style = "fg:black bg:#98C379"
+style = "fg:#98C379"
 ignore_submodules = false
 disabled = false
 
 [docker_context]
 symbol = "\uf308"  # nf-linux-docker
-style = "fg:black bg:#E06C75"
-format = '[ $symbol $context ]($style)$path'
+style = "fg:#61AFEF"
+format = ' [$symbol $context]($style)$path'
 
 [character]
 format = "$symbol "

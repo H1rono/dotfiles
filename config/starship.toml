@@ -36,12 +36,11 @@ read_only_style = "fg:#ABB2BF"
 format = "[$read_only]($read_only_style) [$path]($style) "
 truncate_to_repo = true
 truncation_length = 0
-truncation_symbol = "…/"
 
 [git_branch]
 always_show_remote = false
 format = "[$symbol$branch(:$remote_branch)]($style) "
-symbol = "\uf418"  # octicons git_branch symbol
+symbol = "\uf418"  # nf-oct-git_branch
 style = "fg:#98C379"
 truncation_length = 9223372036854775807
 truncation_symbol = "…"
@@ -51,11 +50,11 @@ disabled = false
 
 [git_commit]
 commit_hash_length = 7
-format = '[\($hash$tag\)]($style) '
+format = '[\($tag$hash\)]($style) '
 only_detached = true
 tag_disabled = true
 tag_max_candidates = 0
-tag_symbol = " \uf412 "  # nf-oct-tag
+tag_symbol = "\uf412 "  # nf-oct-tag
 disabled = false
 style = "fg:#98C379"
 
@@ -93,7 +92,7 @@ disabled = false
 [docker_context]
 symbol = "\uf308"  # nf-linux-docker
 style = "fg:#61AFEF"
-format = ' [$symbol $context]($style)$path'
+format = '[$symbol $context]($style)$path'
 
 [character]
 format = "$symbol "

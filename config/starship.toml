@@ -97,5 +97,5 @@ format = ' [$symbol $context]($style)$path'
 
 [character]
 format = "$symbol "
-success_symbol = "[\uf054](bold green)"     # \uf054: nf-fa-chevron_right
-error_symbol = "[\uf00d \uf054](bold red)"  # \uf00d: nf-fa-remove
+success_symbol = "[\uf054](green)"     # \uf054: nf-fa-chevron_right
+error_symbol = "[\uf00d \uf054](red)"  # \uf00d: nf-fa-remove

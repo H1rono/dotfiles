@@ -66,7 +66,7 @@ do
     ln -s "$SRC" "$DEST"
 done
 
-echo "update $SRC/.env"
+echo "update $SRC_DIR/.env"
 
 echo "DOTFILES_STATUS=installed" > .env
 echo "LAST_DEST_DIR='$DEST_DIR'" >> .env

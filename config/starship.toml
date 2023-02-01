@@ -1,12 +1,10 @@
 # ref:
 # starship configuration reference: https://starship.rs/config/
-# inspired by Pastel Powerline Preset: https://starship.rs/presets/pastel-powerline.html
-# nerd font cheat sheet: https://www.nerdfonts.com/cheat-sheet?set=nf-custom-
+# inspired by pure theme: https://github.com/sindresorhus/pure
+# nerd font cheat sheet: https://www.nerdfonts.com/cheat-sheet
 # One Dark Color Palette: https://www.figma.com/community/file/1137445418485757476
 
-# pastel powerline preset
-#     fg: #9A348E / #DA627D / #FCA17D / #86BBD8 / #06969A / #33658A
-# piece of One Dark Pro color palette:
+# piece of One Dark color palette:
 #     fg: #56B6C2 / #61AFEF / #C678DD / #98C379 / #E06C75 / #BE5046
 #     bg: #282C34
 

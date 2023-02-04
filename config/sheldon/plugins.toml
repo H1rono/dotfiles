@@ -33,6 +33,9 @@ inline = "setopt RM_STAR_SILENT"
 [plugins.brew-completion]
 inline = 'type brew &>/dev/null && FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"'
 
+[plugins.rust-zsh-completions]
+github = "ryutok/rust-zsh-completions"
+
 [plugins.zsh-completions]
 github = "zsh-users/zsh-completions"
 

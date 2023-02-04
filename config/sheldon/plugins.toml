@@ -26,6 +26,9 @@ defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}"
 [plugins.zsh-defer]
 github = "romkatv/zsh-defer"
 
+[plugins.rm-star-silent]
+inline = "setopt RM_STAR_SILENT"
+
 # https://docs.brew.sh/Shell-Completion#configuring-completions-in-zsh
 [plugins.brew-completion]
 inline = 'type brew &>/dev/null && FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"'

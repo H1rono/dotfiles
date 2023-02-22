@@ -45,9 +45,6 @@ github = "zsh-users/zsh-syntax-highlighting"
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
 
-[plugins.ls-coloring]
-inline = 'alias ls="/bin/ls --color=always"'
-
 [plugins.starship]
 inline = 'eval "$(starship init zsh)"'
 

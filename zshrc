@@ -11,3 +11,6 @@ export HISTFILE="$HOME/.zsh_history"
 export HISTSIZE=2000
 export SAVEHIST=2000
 setopt hist_ignore_dups
+
+# cd config
+setopt AUTO_CD

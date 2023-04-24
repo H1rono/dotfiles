@@ -45,6 +45,9 @@ github = "zsh-users/zsh-syntax-highlighting"
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
 
+[plugins.wakatime-zsh-plugin]
+github = "sobolevn/wakatime-zsh-plugin"
+
 [plugins.starship]
 inline = 'eval "$(starship init zsh)"'
 

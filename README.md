@@ -21,6 +21,7 @@ my dotfiles
     - [zsh-completions](https://github.com/zsh-users/zsh-completions)
     - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
     - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
+    - [wakatime-zsh-plugin](https://github.com/sobolevn/wakatime-zsh-plugin)
 - prompt customizing: [Starship](https://starship.rs/) ([GitHub](https://github.com/starship/starship))
 - terminal multiplexer: [tmux](https://github.com/tmux/tmux)
 - tmux plugin manager: [tpm](https://github.com/tmux-plugins/tpm)

@@ -94,9 +94,9 @@ $ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 # install dependencies
 $ cargo install sheldon starship
 # install WezTerm (curl is required)
-$ curl -LO https://github.com/wez/wezterm/releases/download/20221119-145034-49b9839f/wezterm-20221119-145034-49b9839f.Ubuntu22.04.deb
-$ sudo apt-get install ./wezterm-20221119-145034-49b9839f.Ubuntu22.04.deb
-$ rm ./wezterm-20221119-145034-49b9839f.Ubuntu22.04.deb
+$ curl -LO https://github.com/wez/wezterm/releases/download/20230408-112425-69ae8472/wezterm-20230408-112425-69ae8472.Ubuntu22.04.deb
+$ sudo apt-get install ./wezterm-20230408-112425-69ae8472.Ubuntu22.04.deb
+$ rm ./wezterm-20230408-112425-69ae8472.Ubuntu22.04.deb
 ```
 
 Since the commands above to install WezTerm works in only Ubuntu 22.04, please check [Linux installation](https://wezfurlong.org/wezterm/install/linux.html).

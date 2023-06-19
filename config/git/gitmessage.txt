@@ -1,0 +1,17 @@
+
+# emoji	code                description
+# 🎉	:tada:              Begin a project.
+# ✨	:sparkles:          Introduce new features.
+# ✅	:white_check_mark:  Add, update, or pass tests.
+# 📝	:pencil:            Add or update documentation.
+# 🔧	:wrench:            Add or update configuration files.
+# ⬆️ 	:arrow_up:          Upgrade dependencies.
+# 🚧	:construction:      Work in progress.
+# 🔖	:bookmark:          Release / Version tags.
+# 🐛	:bug:               Fix a bug.
+# 🩹	:adhesive_bandage:  Simple fix for a non-critical issue.
+# ♻️ 	:recycle:           Refactor code.
+# 🔥	:fire:              Remove code or files.
+# 💥	:boom:              Introduce breaking changes.
+# 🎨	:art:               Improve structure / format of the code.
+# 💄	:lipstick:          Add or update the UI and style files.

@@ -31,28 +31,36 @@ my dotfiles
 
 Please see [manual installation of dependencies](#manual-installation-of-dependencies) to install above tools manually.
 
+## About [gitmessage.txt](./config/git/gitmessage.txt)
+
+This file is used for setting `git config --global commit.template`. There is my favorite list of [gitmoji](https://gitmoji.dev/).
+
 ## Files' descriptions
 
 ```
 dotfiles
-├── .gitignore            -- .gitignore
-├── LICENSE               -- GPL-3.0 license
-├── README.md             -- this file
+├── .gitignore              -- .gitignore
+├── LICENSE                 -- GPL-3.0 license
+├── README.md               -- this file
 ├── config
+│   ├── git
+│   │   └── gitmessage.txt  -- Git commit template
 │   ├── nvim
-│   │   └── init.vim      -- Neovim startup script
+│   │   └── init.vim        -- Neovim startup script
 │   ├── sheldon
-│   │   └── plugins.toml  -- Sheldon plugin information
-│   └── starship.toml     -- Starship configuration
-├── install.sh            -- install script of dotfiles
-├── tmux.conf             -- tmux configuration
-├── wezterm.lua           -- WezTerm configuration
-└── zshrc                 -- Zsh startup script
+│   │   └── plugins.toml    -- Sheldon plugin information
+│   └── starship.toml       -- Starship configuration
+├── install.sh              -- install script of dotfiles
+├── tmux.conf               -- tmux configuration
+├── wezterm.lua             -- WezTerm configuration
+└── zshrc                   -- Zsh startup script
 ```
 
 ## About `install.sh`
 
-This script (currently) only makes or updates symbolic links from configuration files in this repository to corresponding ones in the specified directory (`$HOME` by default). If you want to make the links into `$HOME` directory, just run:
+This script (currently) only makes or updates symbolic links from configuration files in this repository to corresponding ones in the specified directory (`$HOME` by default), and updates **global** git configuration.
+
+If you want to make the links into `$HOME` directory, just run:
 
 ```bash
 $ ./install.sh

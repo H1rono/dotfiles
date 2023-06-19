@@ -26,6 +26,7 @@ tmux.conf                   .tmux.conf
 config/starship.toml        .config/starship.toml
 config/nvim/init.vim        .config/nvim/init.vim
 config/sheldon/plugins.toml .config/sheldon/plugins.toml
+config/git/gitmessage.txt   .config/git/gitmessage.txt
 "
 
 case "$DOTFILES_STATUS" in
@@ -65,6 +66,9 @@ do
     echo "create a symbolic link to \`$SRC\` at \`$DEST\`"
     ln -s "$SRC" "$DEST"
 done
+
+echo "update git commit template"
+git config --global commit.template "$DEST_DIR/.config/git/gitmessage.txt"
 
 echo "update $SRC_DIR/.env"
 

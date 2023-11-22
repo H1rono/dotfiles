@@ -40,6 +40,10 @@
     openssl
     openssh
     gnupg
+    tree
+
+    # GUI apps
+    wezterm
 
     # utils
     tmux
@@ -80,6 +84,12 @@
     ".config/rtx/config.toml".source = ../../config/rtx/config.toml;
     ".config/sheldon/plugins.toml".source = ../../config/sheldon/plugins.toml;
     ".config/git/gitmessage.txt".source = ../../config/git/gitmessage.txt;
+    ".tmux/plugins/tpm".source = pkgs.fetchFromGitHub {
+      owner = "tmux-plugins";
+      repo = "tpm";
+      rev = "v3.1.0";
+      hash = "sha256-CeI9Wq6tHqV68woE11lIY4cLoNY8XWyXyMHTDmFKJKI=";
+    };
   };
 
   home.activation = {

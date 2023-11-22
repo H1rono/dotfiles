@@ -53,3 +53,12 @@ inline = 'eval "$(starship init zsh)"'
 
 [plugins.compinit]
 inline = "autoload -Uz compinit && zsh-defer compinit"
+
+[plugins.zoxide]
+inline = 'eval "$(zoxide init zsh)"'
+
+[plugins.direnv]
+inline = 'eval "$(direnv hook zsh)"'
+
+[plugins.rtx]
+inline = 'eval "$(rtx activate zsh)"'

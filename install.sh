@@ -18,13 +18,16 @@ SRC_DIR="$(pwd)"
 DOTFILES_STATUS="${DOTFILES_STATUS:-not_installed}"
 [ "$DEST_DIR" != "$LAST_DEST_DIR" ] && export DOTFILES_STATUS="not_installed"
 
+# this should be synced with `home-manager/${each-platform}/home.nix`
 # for each line: $SRC_DIR/$line[0] -> $DEST_DIR/$line[1]
 INSTALL_MAPPINGS="
 zshrc                       .zshrc
 wezterm.lua                 .wezterm.lua
 tmux.conf                   .tmux.conf
 config/starship.toml        .config/starship.toml
+config/bat/config.conf      .config/bat/config
 config/nvim/init.vim        .config/nvim/init.vim
+config/rtx/config.toml      .config/rtx/config.toml
 config/sheldon/plugins.toml .config/sheldon/plugins.toml
 config/git/gitmessage.txt   .config/git/gitmessage.txt
 "

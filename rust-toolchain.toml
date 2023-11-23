@@ -1,5 +1,3 @@
-# This file is currently used by home-manager, to determine what version of rust is to be installed.
-# docs: https://rust-lang.github.io/rustup/overrides.html
 [toolchain]
 channel = "1.74.0-2023-11-16"
 components = ["rustfmt", "clippy", "rust-analyzer", "rustc", "rust-src", "llvm-tools"]

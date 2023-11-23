@@ -2,10 +2,17 @@
 
 my dotfiles
 
-## Environment
+## Environments
+
+### With Home Manager
 
 - MacBook Air (Apple M1 Sillicon)
-    - OS: macOS Ventura 13
+    - OS: macOS Sonoma 14
+
+### Without Home Manager
+
+- MacBook Air (Apple M1 Sillicon)
+    - OS: macOS Sonoma 14
 - Raspberry Pi 4B
     - OS: Raspberry Pi OS
 - else
@@ -13,6 +20,7 @@ my dotfiles
 
 ## Dependencies
 
+- [Home Manager](https://nix-community.github.io/home-manager/) ([GitHub](https://github.com/nix-community/home-manager)) (optional)
 - shell: [Zsh](https://www.zsh.org) ([GitHub mirror](https://github.com/zsh-users/zsh))
 - terminal emulator: [WezTerm](https://wezfurlong.org/wezterm/) ([GitHub](https://github.com/wez/wezterm))
 - Zsh plugin manager: [Sheldon](https://sheldon.cli.rs/) ([GitHub](https://github.com/rossmacarthur/sheldon))
@@ -23,6 +31,12 @@ my dotfiles
     - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
     - [wakatime-zsh-plugin](https://github.com/sobolevn/wakatime-zsh-plugin)
 - prompt customizing: [Starship](https://starship.rs/) ([GitHub](https://github.com/starship/starship))
+- programming language manager: [rtx](https://github.com/jdx/rtx)
+    - managed languages: [Go](https://go.dev), [Python](https://www.python.org)
+- modern CLI tools
+    - [bat](https://github.com/sharkdp/bat)
+    - [zoxide](https://github.com/ajeetdsouza/zoxide)
+    - [lsd](https://github.com/lsd-rs/lsd)
 - terminal multiplexer: [tmux](https://github.com/tmux/tmux)
 - tmux plugin manager: [tpm](https://github.com/tmux-plugins/tpm)
     - [odedlaz/tmux-onedark-theme](https://github.com/odedlaz/tmux-onedark-theme)
@@ -31,29 +45,55 @@ my dotfiles
 
 Please see [manual installation of dependencies](#manual-installation-of-dependencies) to install above tools manually.
 
-## About [gitmessage.txt](./config/git/gitmessage.txt)
-
-This file is used for setting `git config --global commit.template`. There is my favorite list of [gitmoji](https://gitmoji.dev/).
-
 ## Files' descriptions
 
 ```
 dotfiles
 ├── .gitignore              -- .gitignore
-├── LICENSE                 -- GPL-3.0 license
-├── README.md               -- this file
 ├── config
+│   ├── bat
+│   │   └── config.conf     -- default options of `bat`
 │   ├── git
 │   │   └── gitmessage.txt  -- Git commit template
 │   ├── nvim
 │   │   └── init.vim        -- Neovim startup script
+│   ├── rtx
+│   │   └── config.toml     -- rtx global configuration
 │   ├── sheldon
 │   │   └── plugins.toml    -- Sheldon plugin information
 │   └── starship.toml       -- Starship configuration
+├── home-manager
+│   ├── aarch64-darwin
+│   │   ├── flake.lock      -- lockfile of flake.nix
+│   │   ├── flake.nix       -- entrypoint of home-manager
+│   │   └── home.nix        -- configuration body of home-manager
+│   └── common
+│       ├── firge-nerd.nix  -- package file to install FirgeNerd Console
+│       └── sheldon.nix     -- package file to install Sheldon
 ├── install.sh              -- install script of dotfiles
+├── LICENSE                 -- GPL-3.0 licence
+├── README.md               -- this file
+├── rust-toolchain.toml     -- information of rust toolchain
 ├── tmux.conf               -- tmux configuration
 ├── wezterm.lua             -- WezTerm configuration
 └── zshrc                   -- Zsh startup script
+```
+
+## About [gitmessage.txt](./config/git/gitmessage.txt)
+
+This file is used for setting `git config --global commit.template`. There is my favorite list of [gitmoji](https://gitmoji.dev/).
+
+## About [rust-toolchain.toml](./rust-toolchain.toml)
+
+This file is currently used by home-manager (with [fenix](https://github.com/nix-community/fenix)), to determine what version of rust is to be installed. Its layout follows [Overrides - The rustup book #The toolchain file](https://rust-lang.github.io/rustup/overrides.html#the-toolchain-file), which is used for per-directory overrides with rustup.
+
+With rustup, same setup with this file is done by running:
+
+```bash
+# $TOOLCHAIN_CHANNEL corresponds to `channel = ...` in the file
+$ rustup default $TOOLCHAIN_CHANNEL
+# for each element of `components = [...]` in the file (bound to $COMPONENT)
+$ rustup component add $COMPONENT
 ```
 
 ## About `install.sh`
@@ -75,6 +115,20 @@ $ ./install.sh /path/to/dir
 $ ./install.sh ./some/dir
 ```
 
+## One-shot installation
+
+This requires [Home Manager](https://nix-community.github.io/home-manager/) installed. with this command, you don't have to follow [Manual installation](#manual-installation-of-dependencies) below.
+
+```bash
+home-manager switch --flake /path/to/dotfiles/home-manager/$YOUR_SYSTEM
+```
+
+Please replace `$YOUR_SYSTEM` with the result of `nix run github:nix-systems/current-system`.
+
+ref:
+
+- [nix-systems/current-system: Like `builtins.currentSystem` but for the CLI](https://github.com/nix-systems/current-system)
+
 ## Manual installation of dependencies
 
 ### in macOS
@@ -85,22 +139,26 @@ with [Homebrew](https://brew.sh/):
 # install brew
 $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 # install dependencies (zsh may be unnecessary)
-$ brew install zsh sheldon starship tmux neovim
+$ brew install zsh sheldon starship tmux neovim rtx bat zoxide
 $ brew tap wez/wezterm
 $ brew install --cask wez/wezterm/wezterm
 ```
+
+see also [general operation](#general-operation) below.
 
 ### in Ubuntu(-like) OS
 
 with [apt](https://wiki.debian.org/Apt) and [cargo](https://doc.rust-lang.org/cargo/):
 
 ```bash
-# install zsh, tmux, and neovim
-$ sudo apt install zsh tmux neovim
-# install rust
+# requirements to complete installation
+$ sudo apt install libssl-dev pkg-config build-essential cmake
+# install rust (you may need to restart shell)
 $ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-# install dependencies
-$ cargo install sheldon starship
+# install with apt
+$ sudo apt install zsh tmux neovim bat lsd zoxide
+# install with `cargo install`
+$ cargo install sheldon starship rtx-cli
 # install WezTerm (curl is required)
 $ curl -LO https://github.com/wez/wezterm/releases/download/20230408-112425-69ae8472/wezterm-20230408-112425-69ae8472.Ubuntu22.04.deb
 $ sudo apt-get install ./wezterm-20230408-112425-69ae8472.Ubuntu22.04.deb
@@ -109,12 +167,22 @@ $ rm ./wezterm-20230408-112425-69ae8472.Ubuntu22.04.deb
 
 Since the commands above to install WezTerm works in only Ubuntu 22.04, please check [Linux installation](https://wezfurlong.org/wezterm/install/linux.html).
 
+see also [general operation](#general-operation) below.
+
 ### general operation
 
 This is required after OS-specific operation. To install tpm, run:
 
 ```bash
 $ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
+
+To activate rtx, run:
+
+```bash
+$ /path/to/dotfiles/install.sh  # if you haven't run `install.sh`
+$ rtx trust ~/.config/rtx/config.toml
+$ rtx install
 ```
 
 To install FirgeNerd, please follow instructions below.
@@ -131,6 +199,10 @@ To install FirgeNerd, please follow instructions below.
     - [Linux - Wez's Terminal Emulator](https://wezfurlong.org/wezterm/install/linux.html)
 - [📦 Installation - sheldon docs](https://sheldon.cli.rs/Installation.html)
 - [Starship#🚀-installation](https://starship.rs/guide/#%F0%9F%9A%80-installation)
+- [sharkdp/bat: A cat(1) clone with wings. #Installation](https://github.com/sharkdp/bat?tab=readme-ov-file#installation)
+- [lsd-rs/lsd: The next gen ls command #Installation](https://github.com/lsd-rs/lsd?tab=readme-ov-file#installation)
+- [jdx/rtx: Runtime Executor (asdf-plugin compatible) #Installation](https://github.com/jdx/rtx?tab=readme-ov-file#installation)
+- [ajeetdsouza/zoxide: A smarter cd command. Supports all major shells. #Installation](https://github.com/ajeetdsouza/zoxide?tab=readme-ov-file#installation)
 - [Installing · tmux/tmux Wiki](https://github.com/tmux/tmux/wiki/Installing)
 - [Installing Neovim · neovim/neovim Wiki](https://github.com/neovim/neovim/wiki/Installing-Neovim)
 - [tmux-plugins/tpm: Tmux Plugin Manager#installation](https://github.com/tmux-plugins/tpm#installation)

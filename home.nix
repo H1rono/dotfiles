@@ -69,7 +69,7 @@ in
     (callPackage ./packages/firge-nerd.nix { })
 
     # programming languages
-    rtx  # ... manager
+    rtx # ... manager
     (fenix.packages.${pkgs.system}.fromToolchainFile {
       file = ./rust-toolchain.toml;
       sha256 = "sha256-U2yfueFohJHjif7anmJB5vZbpP7G6bICH4ZsjtufRoU=";

@@ -3,7 +3,8 @@
 let
   toolchain = fenix.packages."aarch64-darwin".minimal.toolchain;
   version = "0.7.4";
-in (makeRustPlatform {
+in
+(makeRustPlatform {
   rustc = toolchain;
   cargo = toolchain;
 }).buildRustPackage {

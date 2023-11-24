@@ -1,9 +1,12 @@
 { config, pkgs, lib, fenix, user, ... }:
+let
+  homePrefix = if pkgs.stdenv.isDarwin then "/Users" else "/home";
+in
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = user;
-  home.homeDirectory = "/Users/${user}";
+  home.homeDirectory = "${homePrefix}/${user}";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -56,34 +59,34 @@
     gh
     probe-rs
     # since `pkgs.sheldon` is not available in macOS
-    (callPackage ../common/sheldon.nix { inherit fenix; })
+    (callPackage ./packages/sheldon.nix { inherit fenix; })
 
     # nix devtools
     nil
     nixpkgs-fmt
 
     # fonts
-    (callPackage ../common/firge-nerd.nix { })
+    (callPackage ./packages/firge-nerd.nix { })
 
     # programming languages
     rtx  # ... manager
-    (fenix.packages.aarch64-darwin.fromToolchainFile {
-      file = ../../rust-toolchain.toml;
+    (fenix.packages.${pkgs.system}.fromToolchainFile {
+      file = ./rust-toolchain.toml;
       sha256 = "sha256-U2yfueFohJHjif7anmJB5vZbpP7G6bICH4ZsjtufRoU=";
     })
   ];
 
   # ** this should be synced with `install.sh`. **
   home.file = {
-    ".zshrc".source = ../../zshrc;
-    ".wezterm.lua".source = ../../wezterm.lua;
-    ".tmux.conf".source = ../../tmux.conf;
-    ".config/starship.toml".source = ../../config/starship.toml;
-    ".config/bat/config".source = ../../config/bat/config.conf;
-    ".conig/nvim/init.vim".source = ../../config/nvim/init.vim;
-    ".config/rtx/config.toml".source = ../../config/rtx/config.toml;
-    ".config/sheldon/plugins.toml".source = ../../config/sheldon/plugins.toml;
-    ".config/git/gitmessage.txt".source = ../../config/git/gitmessage.txt;
+    ".zshrc".source = ./zshrc;
+    ".wezterm.lua".source = ./wezterm.lua;
+    ".tmux.conf".source = ./tmux.conf;
+    ".config/starship.toml".source = ./config/starship.toml;
+    ".config/bat/config".source = ./config/bat/config.conf;
+    ".conig/nvim/init.vim".source = ./config/nvim/init.vim;
+    ".config/rtx/config.toml".source = ./config/rtx/config.toml;
+    ".config/sheldon/plugins.toml".source = ./config/sheldon/plugins.toml;
+    ".config/git/gitmessage.txt".source = ./config/git/gitmessage.txt;
     ".tmux/plugins/tpm".source = pkgs.fetchFromGitHub {
       owner = "tmux-plugins";
       repo = "tpm";

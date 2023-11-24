@@ -62,16 +62,14 @@ dotfiles
 │   ├── sheldon
 │   │   └── plugins.toml    -- Sheldon plugin information
 │   └── starship.toml       -- Starship configuration
-├── home-manager
-│   ├── aarch64-darwin
-│   │   ├── flake.lock      -- lockfile of flake.nix
-│   │   ├── flake.nix       -- entrypoint of home-manager
-│   │   └── home.nix        -- configuration body of home-manager
-│   └── common
-│       ├── firge-nerd.nix  -- package file to install FirgeNerd Console
-│       └── sheldon.nix     -- package file to install Sheldon
+├── flake.lock              -- lockfile of flake.nix
+├── flake.nix               -- entrypoint of home-manager
+├── home.nix                -- configuration body of home-manager
 ├── install.sh              -- install script of dotfiles
 ├── LICENSE                 -- GPL-3.0 licence
+├── packages
+│   ├── firge-nerd.nix      -- package file to install FirgeNerd Console
+│   └── sheldon.nix         -- package file to install Sheldon
 ├── README.md               -- this file
 ├── rust-toolchain.toml     -- information of rust toolchain
 ├── tmux.conf               -- tmux configuration
@@ -115,15 +113,16 @@ $ ./install.sh /path/to/dir
 $ ./install.sh ./some/dir
 ```
 
-## One-shot installation
+## Quick installation
 
-This requires [Home Manager](https://nix-community.github.io/home-manager/) installed. with this command, you don't have to follow [Manual installation](#manual-installation-of-dependencies) below.
+This requires [Nix](https://nixos.org) and [Home Manager](https://nix-community.github.io/home-manager/) are installed. With these commands, you don't have to follow [Manual installation](#manual-installation-of-dependencies) below.
 
 ```bash
-home-manager switch --flake /path/to/dotfiles/home-manager/$YOUR_SYSTEM
+$ nix run nixpkgs#gnused -- -i -e "s/kh/$USER/" /path/to/dotfiles/flake.nix
+$ home-manager switch --flake /path/to/dotfiles
 ```
 
-Please replace `$YOUR_SYSTEM` with the result of `nix run github:nix-systems/current-system`.
+**warning**: this way is only tested in M1 MacBook Air (system `aarch64-darwin`).
 
 ref:
 

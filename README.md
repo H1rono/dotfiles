@@ -32,7 +32,7 @@ my dotfiles
     - [wakatime-zsh-plugin](https://github.com/sobolevn/wakatime-zsh-plugin)
 - prompt customizing: [Starship](https://starship.rs/) ([GitHub](https://github.com/starship/starship))
 - programming language manager: [rtx](https://github.com/jdx/rtx)
-    - managed languages: [Go](https://go.dev), [Python](https://www.python.org)
+    - managed languages: [Go](https://go.dev), [Python](https://www.python.org), [NodeJS](https://nodejs.org/en)
 - modern CLI tools
     - [bat](https://github.com/sharkdp/bat)
     - [zoxide](https://github.com/ajeetdsouza/zoxide)

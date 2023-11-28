@@ -13,3 +13,5 @@
 go = "1.21.4"
 # determined from: https://www.python.org/downloads/
 python = "3.11.6"
+# determined from: https://nodejs.org/en/about/previous-releases
+node = "20.10.0"

@@ -1,6 +1,8 @@
 { config, pkgs, lib, fenix, user, ... }:
 let
   homePrefix = if pkgs.stdenv.isDarwin then "/Users" else "/home";
+  sheldon = pkgs.callPackage ./packages/sheldon.nix { inherit fenix; };
+  firge-nerd = pkgs.callPackage ./packages/firge-nerd.nix { };
 in
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -59,14 +61,14 @@ in
     gh
     probe-rs
     # since `pkgs.sheldon` is not available in macOS
-    (callPackage ./packages/sheldon.nix { inherit fenix; })
+    sheldon
 
     # nix devtools
     nil
     nixpkgs-fmt
 
     # fonts
-    (callPackage ./packages/firge-nerd.nix { })
+    firge-nerd
 
     # programming languages
     rtx # ... manager
@@ -99,11 +101,12 @@ in
     activateRtx = lib.hm.dag.entryAfter [ "onFilesChange" "installPackages" ] ''
       $DRY_RUN_CMD /bin/zsh -l -c 'rtx trust ~/.config/rtx/config.toml && rtx install'
     '';
+    updateSheldon = lib.hm.dag.entryAfter [ "onFilesChange" "installPackages" ] ''
+      $DRY_RUN_CMD /bin/zsh -l -c 'sheldon lock'
+    '';
   };
 
-  home.extraActivationPath = with pkgs; [
-    rtx
-  ];
+  home.extraActivationPath = with pkgs; [ rtx sheldon ];
 
   # You can also manage environment variables but you will have to manually
   # source

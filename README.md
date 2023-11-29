@@ -34,6 +34,8 @@ my dotfiles
 - programming language manager: [rtx](https://github.com/jdx/rtx)
     - managed languages: [Go](https://go.dev), [Python](https://www.python.org), [NodeJS](https://nodejs.org/en)
 - modern CLI tools
+    - [jq](https://jqlang.github.io/jq/) ([GitHub](https://github.com/jqlang/jq))
+    - [fzf](https://github.com/junegunn/fzf)
     - [bat](https://github.com/sharkdp/bat)
     - [zoxide](https://github.com/ajeetdsouza/zoxide)
     - [lsd](https://github.com/lsd-rs/lsd)
@@ -138,7 +140,7 @@ with [Homebrew](https://brew.sh/):
 # install brew
 $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 # install dependencies (zsh may be unnecessary)
-$ brew install zsh sheldon starship tmux neovim rtx bat zoxide
+$ brew install zsh sheldon starship tmux neovim rtx bat zoxide jq fzf
 $ brew tap wez/wezterm
 $ brew install --cask wez/wezterm/wezterm
 ```
@@ -155,7 +157,7 @@ $ sudo apt install libssl-dev pkg-config build-essential cmake
 # install rust (you may need to restart shell)
 $ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 # install with apt
-$ sudo apt install zsh tmux neovim bat lsd zoxide
+$ sudo apt install zsh tmux neovim bat lsd zoxide jq fzf
 # install with `cargo install`
 $ cargo install sheldon starship rtx-cli
 # install WezTerm (curl is required)

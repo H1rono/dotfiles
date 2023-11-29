@@ -57,6 +57,8 @@ in
     # utils
     tmux
     lsd
+    jq
+    fzf
     bat
     neovim
     starship

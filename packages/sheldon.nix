@@ -1,18 +1,18 @@
 # https://github.com/rossmacarthur/sheldon/releases/tag/0.7.4
-{ makeRustPlatform, fetchFromGitHub, stdenvNoCC, pkg-config, openssl, libgit2, curl, darwin, fenix, ... }:
+{ makeRustPlatform, fetchFromGitHub, stdenvNoCC, pkg-config, openssl, libgit2, curl, darwin, rust-toolchain, ... }:
 let
-  toolchain = fenix.packages."aarch64-darwin".minimal.toolchain;
+  name = "sheldon";
   version = "0.7.4";
 in
 (makeRustPlatform {
-  rustc = toolchain;
-  cargo = toolchain;
+  rustc = rust-toolchain;
+  cargo = rust-toolchain;
 }).buildRustPackage {
-  pname = "sheldon";
+  pname = name;
   inherit version;
   src = fetchFromGitHub {
     owner = "rossmacarthur";
-    repo = "sheldon";
+    repo = name;
     rev = version;
     hash = "sha256-foIC60cD2U8/w40CVEgloa6lPKq/+dml70rBroY5p7Q=";
   };

@@ -1,7 +1,11 @@
 { config, pkgs, lib, fenix, user, ... }:
 let
   homePrefix = if pkgs.stdenv.isDarwin then "/Users" else "/home";
-  sheldon = pkgs.callPackage ./packages/sheldon.nix { inherit fenix; };
+  rust-toolchain = fenix.packages.${pkgs.system}.fromToolchainFile {
+    file = ./rust-toolchain.toml;
+    sha256 = "sha256-U2yfueFohJHjif7anmJB5vZbpP7G6bICH4ZsjtufRoU=";
+  };
+  sheldon = pkgs.callPackage ./packages/sheldon.nix { inherit rust-toolchain; };
   firge-nerd = pkgs.callPackage ./packages/firge-nerd.nix { };
 in
 {
@@ -72,10 +76,7 @@ in
 
     # programming languages
     rtx # ... manager
-    (fenix.packages.${pkgs.system}.fromToolchainFile {
-      file = ./rust-toolchain.toml;
-      sha256 = "sha256-U2yfueFohJHjif7anmJB5vZbpP7G6bICH4ZsjtufRoU=";
-    })
+    rust-toolchain
   ];
 
   # ** this should be synced with `install.sh`. **

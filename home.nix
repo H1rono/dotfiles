@@ -5,6 +5,7 @@ let
     file = ./rust-toolchain.toml;
     sha256 = "sha256-U2yfueFohJHjif7anmJB5vZbpP7G6bICH4ZsjtufRoU=";
   };
+  # since `pkgs.sheldon` is not available in macOS
   sheldon = pkgs.callPackage ./packages/sheldon.nix { inherit rust-toolchain; };
   firge-nerd = pkgs.callPackage ./packages/firge-nerd.nix { };
 in
@@ -65,8 +66,7 @@ in
     zoxide
     direnv
     gh
-    probe-rs
-    # since `pkgs.sheldon` is not available in macOS
+    du-dust
     sheldon
 
     # nix devtools
@@ -109,7 +109,7 @@ in
     '';
   };
 
-  home.extraActivationPath = with pkgs; [ rtx sheldon ];
+  home.extraActivationPath = [ pkgs.rtx sheldon ];
 
   # You can also manage environment variables but you will have to manually
   # source

@@ -3,7 +3,7 @@ let
   homePrefix = if pkgs.stdenv.isDarwin then "/Users" else "/home";
   rust-toolchain = fenix.packages.${pkgs.system}.fromToolchainFile {
     file = ./rust-toolchain.toml;
-    sha256 = "sha256-U2yfueFohJHjif7anmJB5vZbpP7G6bICH4ZsjtufRoU=";
+    sha256 = "sha256-SXRtAuO4IqNOQq+nLbrsDFbVk+3aVA8NNpSZsKlVH/8=";
   };
   # since `pkgs.sheldon` is not available in macOS
   sheldon = pkgs.callPackage ./packages/sheldon.nix { inherit rust-toolchain; };

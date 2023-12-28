@@ -1,6 +1,6 @@
 [toolchain]
-channel = "1.74.0"
-components = ["rustfmt", "clippy", "rust-analyzer", "rustc", "rust-src", "llvm-tools"]
+channel = "1.75.0"
+components = ["rust-analyzer", "rust-src", "llvm-tools"]
 # The host platform is automatically included
 targets = []
 profile = "default"

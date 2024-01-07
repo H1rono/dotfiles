@@ -88,7 +88,7 @@ in
     ".tmux.conf".source = ./tmux.conf;
     ".config/starship.toml".source = ./config/starship.toml;
     ".config/bat/config".source = ./config/bat/config.conf;
-    ".conig/nvim/init.vim".source = ./config/nvim/init.vim;
+    ".config/nvim/init.vim".source = ./config/nvim/init.vim;
     ".config/rtx/config.toml".source = ./config/rtx/config.toml;
     ".config/sheldon/plugins.toml".source = ./config/sheldon/plugins.toml;
     ".config/git/gitmessage.txt".source = ./config/git/gitmessage.txt;

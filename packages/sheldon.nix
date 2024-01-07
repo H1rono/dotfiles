@@ -1,13 +1,10 @@
 # https://github.com/rossmacarthur/sheldon/releases/tag/0.7.4
-{ makeRustPlatform, fetchFromGitHub, stdenvNoCC, pkg-config, openssl, libgit2, curl, darwin, rust-toolchain, ... }:
+{ rustPlatform, fetchFromGitHub, stdenvNoCC, pkg-config, openssl, libgit2, curl, darwin, ... }:
 let
   name = "sheldon";
   version = "0.7.4";
 in
-(makeRustPlatform {
-  rustc = rust-toolchain;
-  cargo = rust-toolchain;
-}).buildRustPackage {
+rustPlatform.buildRustPackage {
   pname = name;
   inherit version;
   src = fetchFromGitHub {

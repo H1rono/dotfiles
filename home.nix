@@ -5,14 +5,20 @@ let
     file = ./rust-toolchain.toml;
     sha256 = "sha256-SXRtAuO4IqNOQq+nLbrsDFbVk+3aVA8NNpSZsKlVH/8=";
   };
+  rustPlatform = pkgs.makeRustPlatform {
+    rustc = rust-toolchain;
+    cargo = rust-toolchain;
+  };
   # since `pkgs.sheldon` is not available in macOS
-  sheldon = pkgs.callPackage ./packages/sheldon.nix { inherit rust-toolchain; };
+  sheldon = pkgs.callPackage ./packages/sheldon.nix { inherit rustPlatform; };
+  # `mise` is the one which was called as `rtx` in the past
+  mise = pkgs.callPackage ./packages/mise.nix { inherit rustPlatform; };
   firge-nerd = pkgs.callPackage ./packages/firge-nerd.nix { };
 in
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = user;
+  home. username = user;
   home.homeDirectory = "${homePrefix}/${user}";
 
   # This value determines the Home Manager release that your configuration is
@@ -77,7 +83,7 @@ in
     firge-nerd
 
     # programming languages
-    rtx # ... manager
+    mise # ... manager
     rust-toolchain
   ];
 
@@ -89,7 +95,7 @@ in
     ".config/starship.toml".source = ./config/starship.toml;
     ".config/bat/config".source = ./config/bat/config.conf;
     ".config/nvim/init.vim".source = ./config/nvim/init.vim;
-    ".config/rtx/config.toml".source = ./config/rtx/config.toml;
+    ".config/mise/config.toml".source = ./config/mise/config.toml;
     ".config/sheldon/plugins.toml".source = ./config/sheldon/plugins.toml;
     ".config/git/gitmessage.txt".source = ./config/git/gitmessage.txt;
     ".tmux/plugins/tpm".source = pkgs.fetchFromGitHub {
@@ -101,15 +107,15 @@ in
   };
 
   home.activation = {
-    activateRtx = lib.hm.dag.entryAfter [ "onFilesChange" "installPackages" ] ''
-      $DRY_RUN_CMD /bin/zsh -l -c 'rtx trust ~/.config/rtx/config.toml && rtx install'
+    activateMise = lib.hm.dag.entryAfter [ "onFilesChange" "installPackages" ] ''
+      $DRY_RUN_CMD /bin/zsh -l -c 'mise trust ~/.config/mise/config.toml && mise install'
     '';
     updateSheldon = lib.hm.dag.entryAfter [ "onFilesChange" "installPackages" ] ''
       $DRY_RUN_CMD /bin/zsh -l -c 'sheldon lock'
     '';
   };
 
-  home.extraActivationPath = [ pkgs.rtx sheldon ];
+  home.extraActivationPath = [ mise sheldon ];
 
   # You can also manage environment variables but you will have to manually
   # source

@@ -2,14 +2,13 @@
 # starship configuration reference: https://starship.rs/config/
 # inspired by pure theme: https://github.com/sindresorhus/pure
 # nerd font cheat sheet: https://www.nerdfonts.com/cheat-sheet
-# One Dark Color Palette: https://www.figma.com/community/file/1137445418485757476
+# Ayu Mirage color palette: https://github.com/ayu-theme/ayu-colors
 
-# piece of One Dark color palette:
-#     fg: #AAB2BF / #56B6C2 / #61AFEF / #C678DD / #98C379 / #E06C75
-#     bg: #282C34
+# piece of Ayu Mirage color palette:
+#     fg: #707A8C / #5CCFE6 / #73D0FF / #FFAD66 / #87D96C / #F27983 / #D5FF80 / #F28779
 
 format = """
-$username[@](fg:#AAB2BF)$hostname$directory\
+$username[@](fg:#707A8C)$hostname$directory\
 $git_branch$git_commit$git_state$git_status$hg_branch\
 $docker_context
 $character
@@ -18,19 +17,20 @@ add_newline = false
 
 [username]
 show_always = true
-style_user = "fg:#56B6C2"
-style_root = "fg:#E06C75"
+style_user = "fg:#87D96C"
+style_root = "fg:#F27983"
 format = "[$user]($style)"
 
 [hostname]
 ssh_only = false
 format = "[$hostname]($style)"
-style = "fg:#56B6C2"
+style = "fg:#87D96C"
 
 [directory]
-style = "fg:#C678DD"
-read_only = "\uf023"  # nf-fa-lock
-read_only_style = "fg:#ABB2BF"
+style = "fg:#FFAD66"
+# \uf023: nf-fa-lock
+read_only = "\uf023"
+read_only_style = "fg:#707A8C"
 format = "[$read_only]($read_only_style) [$path]($style) "
 truncate_to_repo = true
 truncation_length = 0
@@ -38,8 +38,9 @@ truncation_length = 0
 [git_branch]
 always_show_remote = false
 format = "[$symbol$branch(:$remote_branch)]($style) "
-symbol = "\uf418"  # nf-oct-git_branch
-style = "fg:#98C379"
+# \uf418: nf-oct-git_branch
+symbol = "\uf418"
+style = "fg:#5CCFE6"
 truncation_length = 9223372036854775807
 truncation_symbol = "…"
 only_attached = false
@@ -52,9 +53,10 @@ format = '[\($tag$hash\)]($style) '
 only_detached = true
 tag_disabled = true
 tag_max_candidates = 0
-tag_symbol = "\uf412 "  # nf-oct-tag
+# \uf412: nf-oct-tag
+tag_symbol = "\uf412 "
 disabled = false
-style = "fg:#98C379"
+style = "fg:#5CCFE6"
 
 [git_state]
 rebase = "REBASING"
@@ -64,7 +66,7 @@ cherry_pick = "CHERRY-PICKING"
 bisect = "BISECTING"
 am = "AM"
 am_or_rebase = "AM/REBASE"
-style = "fg:#98C379"
+style = "fg:#5CCFE6"
 format = '[\($state( $progress_current/$progress_total)\) ]($style)'
 disabled = false
 
@@ -75,24 +77,29 @@ conflicted = "= "
 ahead = "⇡"
 behind = "⇣"
 diverged = "⇕ "
-up_to_date = "\uf021 "  # nf-fa-refresh
+# \uf021: nf-fa-refresh
+up_to_date = "\uf021 "
 untracked = "? "
 stashed = "% "
 modified = "* "
-# modified = "\uf5c8"  # nf-mdi-border_color
+# \uf5c8: nf-mdi-border_color
+# modified = "\uf5c8"
 staged = "+ "
 renamed = "» "
 deleted = "✘ "
-style = "fg:#98C379"
+style = "fg:#5CCFE6"
 ignore_submodules = false
 disabled = false
 
 [docker_context]
-symbol = "\uf308"  # nf-linux-docker
-style = "fg:#61AFEF"
+# \uf308: nf-linux-docker
+symbol = "\uf308"
+style = "fg:#73D0FF"
 format = '[$symbol $context]($style)$path'
 
 [character]
 format = "$symbol "
-success_symbol = "[\uf054](green)"     # \uf054: nf-fa-chevron_right
-error_symbol = "[\uf00d \uf054](red)"  # \uf00d: nf-fa-remove
+# \uf054: nf-fa-chevron_right
+success_symbol = "[\uf054](#87D96C)"
+# \uf00d: nf-fa-remove
+error_symbol = "[\uf00d \uf054](#F28779)"

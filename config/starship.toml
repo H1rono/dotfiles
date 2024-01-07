@@ -5,7 +5,7 @@
 # Ayu Mirage color palette: https://github.com/ayu-theme/ayu-colors
 
 # piece of Ayu Mirage color palette:
-#     fg: #707A8C / #5CCFE6 / #73D0FF / #FFAD66 / #87D96C / #F27983 / #D5FF80 / #F28779
+#     fg: #707A8C / #5CCFE6 / #73D0FF / #FFAD66 / #87D96C / #F27983 / #F28779 / #DFBFFF
 
 format = """
 $username[@](fg:#707A8C)$hostname$directory\
@@ -17,14 +17,14 @@ add_newline = false
 
 [username]
 show_always = true
-style_user = "fg:#87D96C"
+style_user = "fg:#DFBFFF"
 style_root = "fg:#F27983"
 format = "[$user]($style)"
 
 [hostname]
 ssh_only = false
 format = "[$hostname]($style)"
-style = "fg:#87D96C"
+style = "fg:#DFBFFF"
 
 [directory]
 style = "fg:#FFAD66"

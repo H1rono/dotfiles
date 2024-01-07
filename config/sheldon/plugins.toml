@@ -60,5 +60,5 @@ inline = 'eval "$(zoxide init zsh)"'
 [plugins.direnv]
 inline = 'eval "$(direnv hook zsh)"'
 
-[plugins.rtx]
-inline = 'eval "$(rtx activate zsh)"'
+[plugins.mise]
+inline = 'eval "$(mise activate zsh)"'

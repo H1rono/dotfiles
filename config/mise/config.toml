@@ -1,0 +1,15 @@
+[plugins]
+# core plugins:
+# go      https://mise.jdx.dev/lang/go.html
+# java    https://mise.jdx.dev/lang/java.html
+# node    https://mise.jdx.dev/lang/node.html
+# python  https://mise.jdx.dev/lang/python.html
+# ruby    https://mise.jdx.dev/lang/ruby.html
+
+[tools]
+# determined from: https://go.dev/dl/
+go = "1.21.4"
+# determined from: https://www.python.org/downloads/
+python = "3.11.6"
+# determined from: https://nodejs.org/en/about/previous-releases
+node = "20.10.0"

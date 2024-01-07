@@ -31,7 +31,7 @@ my dotfiles
     - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
     - [wakatime-zsh-plugin](https://github.com/sobolevn/wakatime-zsh-plugin)
 - prompt customizing: [Starship](https://starship.rs/) ([GitHub](https://github.com/starship/starship))
-- programming language manager: [rtx](https://github.com/jdx/rtx)
+- programming language manager: [mise](https://mise.jdx.dev) ([GitHub](https://github.com/jdx/mise))
     - managed languages: [Go](https://go.dev), [Python](https://www.python.org), [NodeJS](https://nodejs.org/en)
 - modern CLI tools
     - [jq](https://jqlang.github.io/jq/) ([GitHub](https://github.com/jqlang/jq))
@@ -59,8 +59,8 @@ dotfiles
 │   │   └── gitmessage.txt  -- Git commit template
 │   ├── nvim
 │   │   └── init.vim        -- Neovim startup script
-│   ├── rtx
-│   │   └── config.toml     -- rtx global configuration
+│   ├── mise
+│   │   └── config.toml     -- mise global configuration
 │   ├── sheldon
 │   │   └── plugins.toml    -- Sheldon plugin information
 │   └── starship.toml       -- Starship configuration
@@ -140,7 +140,7 @@ with [Homebrew](https://brew.sh/):
 # install brew
 $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 # install dependencies (zsh may be unnecessary)
-$ brew install zsh sheldon starship tmux neovim rtx bat zoxide jq fzf
+$ brew install zsh sheldon starship tmux neovim mise bat zoxide jq fzf
 $ brew tap wez/wezterm
 $ brew install --cask wez/wezterm/wezterm
 ```
@@ -159,7 +159,7 @@ $ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 # install with apt
 $ sudo apt install zsh tmux neovim bat lsd zoxide jq fzf
 # install with `cargo install`
-$ cargo install sheldon starship rtx-cli
+$ cargo install sheldon starship mise
 # install WezTerm (curl is required)
 $ curl -LO https://github.com/wez/wezterm/releases/download/20230408-112425-69ae8472/wezterm-20230408-112425-69ae8472.Ubuntu22.04.deb
 $ sudo apt-get install ./wezterm-20230408-112425-69ae8472.Ubuntu22.04.deb
@@ -178,12 +178,12 @@ This is required after OS-specific operation. To install tpm, run:
 $ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 
-To activate rtx, run:
+To activate mise, run:
 
 ```bash
 $ /path/to/dotfiles/install.sh  # if you haven't run `install.sh`
-$ rtx trust ~/.config/rtx/config.toml
-$ rtx install
+$ mise trust ~/.config/mise/config.toml
+$ mise install
 ```
 
 To install FirgeNerd, please follow instructions below.
@@ -202,7 +202,7 @@ To install FirgeNerd, please follow instructions below.
 - [Starship#🚀-installation](https://starship.rs/guide/#%F0%9F%9A%80-installation)
 - [sharkdp/bat: A cat(1) clone with wings. #Installation](https://github.com/sharkdp/bat?tab=readme-ov-file#installation)
 - [lsd-rs/lsd: The next gen ls command #Installation](https://github.com/lsd-rs/lsd?tab=readme-ov-file#installation)
-- [jdx/rtx: Runtime Executor (asdf-plugin compatible) #Installation](https://github.com/jdx/rtx?tab=readme-ov-file#installation)
+- [Getting Started | mise-en-place](https://mise.jdx.dev/getting-started.html)
 - [ajeetdsouza/zoxide: A smarter cd command. Supports all major shells. #Installation](https://github.com/ajeetdsouza/zoxide?tab=readme-ov-file#installation)
 - [Installing · tmux/tmux Wiki](https://github.com/tmux/tmux/wiki/Installing)
 - [Installing Neovim · neovim/neovim Wiki](https://github.com/neovim/neovim/wiki/Installing-Neovim)

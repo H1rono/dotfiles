@@ -1,0 +1,60 @@
+name: Update flake lockfile
+
+on:
+  schedule:
+    - cron: '0 0 1 * *'
+  workflow_dispatch:
+
+jobs:
+  check-update:
+    runs-on: ubuntu-latest
+    outputs:
+      has_diff: ${{ steps.check-diff.outputs.has_diff }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: cachix/install-nix-action@v24
+        with:
+          nix_path: "nixpkgs=channel:release-23.11"
+      - name: Update
+        run: nix flake update
+      - name: Check diff
+        id: check-diff
+        run: |
+          if git diff --exit-code flake.lock > /dev/null; then
+            echo "has_diff=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_diff=true" >> "$GITHUB_OUTPUT"
+          fi
+
+  update-flake-lock:
+    runs-on: ubuntu-latest
+    needs: check-update
+    if: needs.check-update.outputs.has_diff == 'true'
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: cachix/install-nix-action@v24
+        with:
+          nix_path: "nixpkgs=channel:release-23.11"
+      - name: Update
+        run: nix flake update
+      - name: git commit and push
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          BRANCH_NAME="update-$(date +'%Y%m%d')"
+          git switch -c "$BRANCH_NAME"
+          git add flake.lock
+          git commit -m ":arrow_up: CI: update nix flake"
+          git push origin "$BRANCH_NAME"
+      - name: Create pull request
+        run: |
+          gh pr create --title "CI: update flake" --body "" --base main --assignee H1rono
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

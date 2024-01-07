@@ -27,7 +27,7 @@ tmux.conf                   .tmux.conf
 config/starship.toml        .config/starship.toml
 config/bat/config.conf      .config/bat/config
 config/nvim/init.vim        .config/nvim/init.vim
-config/rtx/config.toml      .config/rtx/config.toml
+config/mise/config.toml      .config/mise/config.toml
 config/sheldon/plugins.toml .config/sheldon/plugins.toml
 config/git/gitmessage.txt   .config/git/gitmessage.txt
 "

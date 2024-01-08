@@ -18,8 +18,8 @@ jobs:
           nix_path: "nixpkgs=channel:release-23.11"
       - uses: DeterminateSystems/magic-nix-cache-action@v2
       - run: |
-          nix-channel --add https://github.com/rycee/home-manager/archive/master.tar.gz home-manager
+          nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
           nix-channel --update
       - run: |
           nix run nixpkgs#gnused -- -i -e "s/kh/$USER/" ./flake.nix
-          nix run home-manager/release-23.11 -- build --flake .
+          nix run github:nix-community/home-manager/release-23.11 -- build --flake .

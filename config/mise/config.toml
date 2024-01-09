@@ -1,5 +1,7 @@
 [plugins]
 # core plugins:
+# bun     https://mise.jdx.dev/lang/bun.html
+# deno    https://mise.jdx.dev/lang/deno.html
 # go      https://mise.jdx.dev/lang/go.html
 # java    https://mise.jdx.dev/lang/java.html
 # node    https://mise.jdx.dev/lang/node.html
@@ -7,6 +9,8 @@
 # ruby    https://mise.jdx.dev/lang/ruby.html
 
 [tools]
+# determined from: https://github.com/denoland/deno/releases
+deno = "1.39.2"
 # determined from: https://go.dev/dl/
 go = "1.21.4"
 # determined from: https://www.python.org/downloads/

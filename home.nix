@@ -50,6 +50,7 @@ in
     # essentials
     vim
     git
+    git-lfs
     wget
     curl
     readline

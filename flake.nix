@@ -70,6 +70,7 @@
               inherit fenix user;
             };
           };
+          inherit (pkgs) rustToolchain sheldon mise firge-nerd;
         };
       });
 }

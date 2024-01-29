@@ -18,7 +18,7 @@
   outputs = inputs@{ self, nixpkgs, flake-utils, home-manager, fenix, ... }:
     let
       user = "kh";
-      rustToolchain = { system, ... }: fenix.packages.${system}.fromToolchainFile {
+      rustToolchain = { system, fenix, ... }: fenix.fromToolchainFile {
         file = ./rust-toolchain.toml;
         sha256 = "sha256-SXRtAuO4IqNOQq+nLbrsDFbVk+3aVA8NNpSZsKlVH/8=";
       };
@@ -29,6 +29,7 @@
     in
     {
       overlays = {
+        fenix = fenix.overlays.default;
         rustToolchain = final: prev: {
           rustToolchain = prev.callPackage rustToolchain { };
           rustPlatform = prev.callPackage rustPlatform { };
@@ -48,6 +49,7 @@
         pkgs = import nixpkgs {
           inherit system;
           overlays = [
+            self.overlays.fenix
             self.overlays.rustToolchain
             self.overlays.sheldon
             self.overlays.mise

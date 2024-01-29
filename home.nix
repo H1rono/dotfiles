@@ -1,19 +1,7 @@
-{ config, pkgs, lib, fenix, user, ... }:
+{ config, pkgs, lib, user, ... }:
 let
+  inherit (pkgs) rustToolchain sheldon mise firge-nerd;
   homePrefix = if pkgs.stdenv.isDarwin then "/Users" else "/home";
-  rust-toolchain = fenix.packages.${pkgs.system}.fromToolchainFile {
-    file = ./rust-toolchain.toml;
-    sha256 = "sha256-SXRtAuO4IqNOQq+nLbrsDFbVk+3aVA8NNpSZsKlVH/8=";
-  };
-  rustPlatform = pkgs.makeRustPlatform {
-    rustc = rust-toolchain;
-    cargo = rust-toolchain;
-  };
-  # since `pkgs.sheldon` is not available in macOS
-  sheldon = pkgs.callPackage ./packages/sheldon.nix { inherit rustPlatform; };
-  # `mise` is the one which was called as `rtx` in the past
-  mise = pkgs.callPackage ./packages/mise.nix { inherit rustPlatform; };
-  firge-nerd = pkgs.callPackage ./packages/firge-nerd.nix { };
 in
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -85,7 +73,7 @@ in
 
     # programming languages
     mise # ... manager
-    rust-toolchain
+    rustToolchain
   ];
 
   # ** this should be synced with `install.sh`. **

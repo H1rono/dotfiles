@@ -32,6 +32,8 @@
         fenix = fenix.overlays.default;
         rustToolchain = final: prev: {
           rustToolchain = prev.callPackage rustToolchain { };
+        };
+        rustPlatform = final: prev: {
           rustPlatform = prev.callPackage rustPlatform { };
         };
         sheldon = final: prev: {

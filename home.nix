@@ -63,6 +63,7 @@ in
     gh
     du-dust
     sheldon
+    cargo-clean-all
 
     # nix devtools
     nil

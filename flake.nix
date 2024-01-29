@@ -45,6 +45,9 @@
         firge-nerd = final: prev: {
           firge-nerd = prev.callPackage ./packages/firge-nerd.nix { };
         };
+        cargo-clean-all = final: prev: {
+          cargo-clean-all = prev.callPackage ./packages/cargo-clean-all.nix { };
+        };
       };
     } // flake-utils.lib.eachDefaultSystem (system:
       let
@@ -56,6 +59,7 @@
             self.overlays.sheldon
             self.overlays.mise
             self.overlays.firge-nerd
+            self.overlays.cargo-clean-all
           ];
         };
       in
@@ -74,7 +78,7 @@
               inherit user;
             };
           };
-          inherit (pkgs) rustToolchain sheldon mise firge-nerd;
+          inherit (pkgs) rustToolchain sheldon mise firge-nerd cargo-clean-all;
         };
       });
 }

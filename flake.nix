@@ -15,14 +15,44 @@
     };
   };
 
-  outputs = inputs@{ nixpkgs, flake-utils, home-manager, fenix, ... }:
+  outputs = inputs@{ self, nixpkgs, flake-utils, home-manager, fenix, ... }:
     let
       user = "kh";
+      rustToolchain = { system, ... }: fenix.packages.${system}.fromToolchainFile {
+        file = ./rust-toolchain.toml;
+        sha256 = "sha256-SXRtAuO4IqNOQq+nLbrsDFbVk+3aVA8NNpSZsKlVH/8=";
+      };
+      rustPlatform = { callPackage, makeRustPlatform, ... }: makeRustPlatform rec {
+        rustc = callPackage rustToolchain { };
+        cargo = rustc;
+      };
     in
-    flake-utils.lib.eachDefaultSystem (system:
+    {
+      overlays = {
+        rustToolchain = final: prev: {
+          rustToolchain = prev.callPackage rustToolchain { };
+          rustPlatform = prev.callPackage rustPlatform { };
+        };
+        sheldon = final: prev: {
+          sheldon = prev.callPackage ./packages/sheldon.nix { };
+        };
+        mise = final: prev: {
+          mise = prev.callPackage ./packages/mise.nix { };
+        };
+        firge-nerd = final: prev: {
+          firge-nerd = prev.callPackage ./packages/firge-nerd.nix { };
+        };
+      };
+    } // flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs {
           inherit system;
+          overlays = [
+            self.overlays.rustToolchain
+            self.overlays.sheldon
+            self.overlays.mise
+            self.overlays.firge-nerd
+          ];
         };
       in
       {

@@ -101,7 +101,7 @@ local function bg_image(candidates)
     end
     return {
         source = { File = bg_image_path },
-        opacity = 0.7,
+        opacity = 0.32,
         hsb = {
             hue = 1.0,
             saturation = 1.0,
@@ -119,7 +119,7 @@ local function make_background()
     local res --[[array<WezTermBackgroundLayer>]] = {
         {   -- base background color
             source = { Color = "#282C34" },
-            opacity = 1.0,
+            opacity = 0.7,
             width = "100%",
             height = "100%",
         },

@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: cachix/install-nix-action@v24
+      - uses: cachix/install-nix-action@v25
         with:
           nix_path: "nixpkgs=channel:release-23.11"
       - name: Update
@@ -40,7 +40,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: cachix/install-nix-action@v24
+      - uses: cachix/install-nix-action@v25
         with:
           nix_path: "nixpkgs=channel:release-23.11"
       - name: Update

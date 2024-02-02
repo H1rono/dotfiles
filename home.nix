@@ -68,6 +68,7 @@ in
     # nix devtools
     nil
     nixpkgs-fmt
+    cachix
 
     # fonts
     firge-nerd

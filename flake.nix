@@ -13,9 +13,14 @@
       url = "github:nix-community/fenix/monthly";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # non-flake inputs
+    cargo-clean-all = {
+      url = "github:dnlmlr/cargo-clean-all/v0.6.2";
+      flake = false;
+    };
   };
 
-  outputs = inputs@{ self, nixpkgs, flake-utils, home-manager, fenix, ... }:
+  outputs = inputs@{ self, nixpkgs, flake-utils, home-manager, fenix, cargo-clean-all, ... }:
     let
       user = "kh";
       rustToolchain = { system, fenix, ... }: fenix.fromToolchainFile {

@@ -1,5 +1,22 @@
 {
   "nodes": {
+    "cargo-clean-all": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1703528664,
+        "narHash": "sha256-rNwAzpBUAFDt6SpVi1htAMTB7TUD4YqpxJkd3hYCPAQ=",
+        "owner": "dnlmlr",
+        "repo": "cargo-clean-all",
+        "rev": "21b0d4a451629f1f9073dbab8b32a6de85b33f75",
+        "type": "github"
+      },
+      "original": {
+        "owner": "dnlmlr",
+        "ref": "v0.6.2",
+        "repo": "cargo-clean-all",
+        "type": "github"
+      }
+    },
     "fenix": {
       "inputs": {
         "nixpkgs": [
@@ -79,6 +96,7 @@
     },
     "root": {
       "inputs": {
+        "cargo-clean-all": "cargo-clean-all",
         "fenix": "fenix",
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",

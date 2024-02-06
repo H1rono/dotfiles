@@ -1,17 +1,23 @@
 # https://github.com/dnlmlr/cargo-clean-all/releases/tag/v0.6.2
-{ pkgs, lib, stdenv, fetchFromGitHub, rustPlatform, coreutils, bash, direnv, openssl }:
+{ pkgs
+, lib
+, stdenv
+, fetchFromGitHub
+, rustPlatform
+, coreutils
+, bash
+, direnv
+, openssl
+, src
+}:
 let
-  pname = "cargo-clean-all";
-  version = "v0.6.2";
-  src = fetchFromGitHub {
-    owner = "dnlmlr";
-    repo = pname;
-    rev = version;
-    hash = "sha256-rNwAzpBUAFDt6SpVi1htAMTB7TUD4YqpxJkd3hYCPAQ=";
-  };
+  info = import ../nix/readInputInfo.nix "cargo-clean-all";
+  inherit (info.original) owner ref repo;
 in
 rustPlatform.buildRustPackage {
-  inherit pname version src;
+  inherit src;
+  pname = repo;
+  version = ref;
 
   cargoLock.lockFile = "${src}/Cargo.lock";
   doCheck = false;

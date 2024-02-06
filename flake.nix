@@ -51,7 +51,9 @@
           firge-nerd = prev.callPackage ./packages/firge-nerd.nix { };
         };
         cargo-clean-all = final: prev: {
-          cargo-clean-all = prev.callPackage ./packages/cargo-clean-all.nix { };
+          cargo-clean-all = prev.callPackage ./packages/cargo-clean-all.nix {
+            src = cargo-clean-all;
+          };
         };
       };
     } // flake-utils.lib.eachDefaultSystem (system:

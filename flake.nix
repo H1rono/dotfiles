@@ -20,7 +20,15 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, flake-utils, home-manager, fenix, cargo-clean-all, ... }:
+  outputs =
+    inputs@{ self
+    , nixpkgs
+    , flake-utils
+    , home-manager
+    , fenix
+    , cargo-clean-all
+    , ...
+    }:
     let
       user = "kh";
       rustToolchain = { system, fenix, ... }: fenix.fromToolchainFile {
@@ -57,35 +65,35 @@
         };
       };
     } // flake-utils.lib.eachDefaultSystem (system:
-      let
-        pkgs = import nixpkgs {
-          inherit system;
-          overlays = [
-            self.overlays.fenix
-            self.overlays.rustToolchain
-            self.overlays.sheldon
-            self.overlays.mise
-            self.overlays.firge-nerd
-            self.overlays.cargo-clean-all
-          ];
-        };
-      in
-      {
-        packages = {
-          homeConfigurations."${user}" = home-manager.lib.homeManagerConfiguration {
-            inherit pkgs;
+    let
+      pkgs = import nixpkgs {
+        inherit system;
+        overlays = [
+          self.overlays.fenix
+          self.overlays.rustToolchain
+          self.overlays.sheldon
+          self.overlays.mise
+          self.overlays.firge-nerd
+          self.overlays.cargo-clean-all
+        ];
+      };
+    in
+    {
+      packages = {
+        homeConfigurations."${user}" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
 
-            # Specify your home configuration modules here, for example,
-            # the path to your home.nix.
-            modules = [ ./home.nix ];
+          # Specify your home configuration modules here, for example,
+          # the path to your home.nix.
+          modules = [ ./home.nix ];
 
-            # Optionally use extraSpecialArgs
-            # to pass through arguments to home.nix
-            extraSpecialArgs = {
-              inherit user;
-            };
+          # Optionally use extraSpecialArgs
+          # to pass through arguments to home.nix
+          extraSpecialArgs = {
+            inherit user;
           };
-          inherit (pkgs) rustToolchain sheldon mise firge-nerd cargo-clean-all;
         };
-      });
+        inherit (pkgs) rustToolchain sheldon mise firge-nerd cargo-clean-all;
+      };
+    });
 }

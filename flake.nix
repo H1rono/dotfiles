@@ -60,7 +60,9 @@
           sheldon = prev.callPackage ./packages/sheldon.nix { };
         };
         mise = final: prev: {
-          mise = prev.callPackage ./packages/mise.nix { };
+          mise = prev.callPackage ./packages/mise.nix {
+            src = mise;
+          };
         };
         firge-nerd = final: prev: {
           firge-nerd = prev.callPackage ./packages/firge-nerd.nix { };

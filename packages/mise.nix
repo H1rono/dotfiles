@@ -1,19 +1,13 @@
 # https://github.com/jdx/mise/releases/tag/v2024.1.12
 { pkgs
 , lib
-, fetchFromGitHub
 , rustPlatform
+, src
 }:
 let
   owner = "jdx";
   pname = "mise";
   version = "2024.1.12";
-  src = fetchFromGitHub {
-    inherit owner;
-    repo = pname;
-    rev = "v${version}";
-    hash = "sha256-JzZMxu1/+TmbtEOkOCF7iEKi0CKh8/CZt8rgxZz8n50=";
-  };
 in
 rustPlatform.buildRustPackage {
   inherit pname version src;

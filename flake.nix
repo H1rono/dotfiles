@@ -33,7 +33,7 @@
       user = "kh";
       rustToolchain = { system, fenix, ... }: fenix.fromToolchainFile {
         file = ./rust-toolchain.toml;
-        sha256 = "sha256-SXRtAuO4IqNOQq+nLbrsDFbVk+3aVA8NNpSZsKlVH/8=";
+        sha256 = "sha256-e4mlaJehWBymYxJGgnbuCObVlqMlQSilZ8FljG9zPHY=";
       };
       rustPlatform = { callPackage, makeRustPlatform, ... }: makeRustPlatform rec {
         rustc = callPackage rustToolchain { };

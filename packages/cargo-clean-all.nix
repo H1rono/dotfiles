@@ -1,12 +1,16 @@
 # https://github.com/dnlmlr/cargo-clean-all/releases/tag/v0.6.2
+let
+  fetchFlakeInput = import ../nix/fetchFlakeInput.nix;
+  readInputInfo = import ../nix/readInputInfo.nix;
+in
 { pkgs ? import <nixpkgs> { }
 , lib ? pkgs.lib
 , rustPlatform ? pkgs.rustPlatform
-, src ? import ../nix/fetchFlakeInput.nix "cargo-clean-all"
+, src ? fetchFlakeInput "cargo-clean-all"
 }:
 let
-  info = import ../nix/readInputInfo.nix "cargo-clean-all";
-  inherit (info.original) ref repo;
+  info = readInputInfo "cargo-clean-all";
+  inherit (info.original) ref owner repo;
 in
 rustPlatform.buildRustPackage {
   inherit src;
@@ -20,7 +24,7 @@ rustPlatform.buildRustPackage {
   buildInputs = [ ];
 
   meta = with lib; {
-    homepage = "https://github.com/dnlmlr/cargo-clean-all";
+    homepage = "https://github.com/${owner}/${repo}";
     license = licenses.mit;
   };
 }

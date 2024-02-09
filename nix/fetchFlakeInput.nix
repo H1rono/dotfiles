@@ -6,7 +6,7 @@ let
   inherit (inputInfo.locked) owner repo rev narHash;
 in
 {
-  inherit rev;
+  inherit rev narHash;
   outPath = fetchTarball {
     url = "https://github.com/${owner}/${repo}/archive/${rev}.tar.gz";
     sha256 = narHash;

@@ -1,16 +1,21 @@
 # https://github.com/jdx/mise/releases/tag/v2024.1.12
-{ pkgs
-, lib
-, rustPlatform
-, src
+let
+  fetchFlakeInput = import ../nix/fetchFlakeInput.nix;
+  readInputInfo = import ../nix/readInputInfo.nix;
+in
+{ pkgs ? import <nixpkgs> { }
+, lib ? pkgs.lib
+, rustPlatform ? pkgs.rustPlatform
+, src ? fetchFlakeInput "mise"
 }:
 let
-  owner = "jdx";
-  pname = "mise";
-  version = "2024.1.12";
+  info = readInputInfo "mise";
+  inherit (info.original) ref owner repo;
 in
 rustPlatform.buildRustPackage {
-  inherit pname version src;
+  inherit src;
+  pname = repo;
+  version = ref;
 
   cargoLock.lockFile = "${src}/Cargo.lock";
   doCheck = false;
@@ -36,7 +41,7 @@ rustPlatform.buildRustPackage {
 
   meta = with lib; {
     description = "The front-end to your dev env";
-    homepage = "https://github.com/${owner}/${pname}";
+    homepage = "https://github.com/${owner}/${repo}";
     license = licenses.mit;
   };
 }

@@ -18,15 +18,22 @@
       url = "github:dnlmlr/cargo-clean-all/v0.6.2";
       flake = false;
     };
+    mise = {
+      url = "github:jdx/mise/v2024.1.12";
+      flake = false;
+    };
   };
 
   outputs =
     inputs@{ self
+      # flakes
     , nixpkgs
     , flake-utils
     , home-manager
     , fenix
+      # non-flakes
     , cargo-clean-all
+    , mise
     , ...
     }:
     let

@@ -78,6 +78,23 @@
         "type": "github"
       }
     },
+    "mise": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1704631376,
+        "narHash": "sha256-JzZMxu1/+TmbtEOkOCF7iEKi0CKh8/CZt8rgxZz8n50=",
+        "owner": "jdx",
+        "repo": "mise",
+        "rev": "3750934ae3b3e367b62b0c4a33aaa103cba894f3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jdx",
+        "ref": "v2024.1.12",
+        "repo": "mise",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1707091808,
@@ -100,6 +117,7 @@
         "fenix": "fenix",
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
+        "mise": "mise",
         "nixpkgs": "nixpkgs"
       }
     },

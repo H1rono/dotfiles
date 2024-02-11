@@ -1,22 +1,22 @@
 # https://github.com/rossmacarthur/sheldon/releases/tag/0.7.4
+let
+  fetchFlakeInput = import ../nix/fetchFlakeInput.nix;
+  readInputInfo = import ../nix/readInputInfo.nix;
+in
 { pkgs ? import <nixpkgs> { }
 , lib ? pkgs.lib
 , rustPlatform ? pkgs.rustPlatform
 , fetchFromGitHub ? pkgs.fetchFromGitHub
+, src ? fetchFlakeInput "sheldon"
 }:
 let
-  name = "sheldon";
-  version = "0.7.4";
-  src = fetchFromGitHub {
-    owner = "rossmacarthur";
-    repo = name;
-    rev = version;
-    hash = "sha256-foIC60cD2U8/w40CVEgloa6lPKq/+dml70rBroY5p7Q=";
-  };
+  info = readInputInfo "sheldon";
+  inherit (info.original) ref repo;
 in
 rustPlatform.buildRustPackage {
-  pname = name;
-  inherit version src;
+  pname = repo;
+  version = ref;
+  inherit src;
   cargoLock.lockFile = "${src}/Cargo.lock";
   nativeBuildInputs = [ pkgs.pkg-config ];
   buildInputs = with pkgs; [

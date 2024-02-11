@@ -1,20 +1,28 @@
 # https://github.com/rossmacarthur/sheldon/releases/tag/0.7.4
-{ rustPlatform, fetchFromGitHub, stdenvNoCC, pkg-config, openssl, libgit2, curl, darwin, ... }:
+{ pkgs ? import <nixpkgs> { }
+, lib ? pkgs.lib
+, rustPlatform ? pkgs.rustPlatform
+, fetchFromGitHub ? pkgs.fetchFromGitHub
+}:
 let
   name = "sheldon";
   version = "0.7.4";
-in
-rustPlatform.buildRustPackage {
-  pname = name;
-  inherit version;
   src = fetchFromGitHub {
     owner = "rossmacarthur";
     repo = name;
     rev = version;
     hash = "sha256-foIC60cD2U8/w40CVEgloa6lPKq/+dml70rBroY5p7Q=";
   };
-  nativeBuildInputs = [ pkg-config ];
-  buildInputs = [ openssl libgit2 curl ] ++ builtins.filter (_: stdenvNoCC.isDarwin) [ darwin.Security ];
-  cargoSha256 = "sha256-XY8FtZcTKoWB9GpooJv16OrqqRDKK86lor2TsyRxLtw=";
+in
+rustPlatform.buildRustPackage {
+  pname = name;
+  inherit version src;
+  cargoLock.lockFile = "${src}/Cargo.lock";
+  nativeBuildInputs = [ pkgs.pkg-config ];
+  buildInputs = with pkgs; [
+    openssl
+    libgit2
+    curl
+  ] ++ lib.optionals stdenv.isDarwin [ darwin.Security ];
   doCheck = false;
 }

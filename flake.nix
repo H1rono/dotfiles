@@ -22,6 +22,10 @@
       url = "github:jdx/mise/v2024.1.12";
       flake = false;
     };
+    sheldon = {
+      url = "github:rossmacarthur/sheldon/0.7.4";
+      flake = false;
+    };
   };
 
   outputs =
@@ -34,6 +38,7 @@
       # non-flakes
     , cargo-clean-all
     , mise
+    , sheldon
     , ...
     }:
     let

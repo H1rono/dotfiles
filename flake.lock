@@ -118,7 +118,8 @@
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "mise": "mise",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "sheldon": "sheldon"
       }
     },
     "rust-analyzer-src": {
@@ -135,6 +136,23 @@
         "owner": "rust-lang",
         "ref": "nightly",
         "repo": "rust-analyzer",
+        "type": "github"
+      }
+    },
+    "sheldon": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1700397504,
+        "narHash": "sha256-foIC60cD2U8/w40CVEgloa6lPKq/+dml70rBroY5p7Q=",
+        "owner": "rossmacarthur",
+        "repo": "sheldon",
+        "rev": "9a56dcfc79c6e9f9bcf8480c162c50db013bb172",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rossmacarthur",
+        "ref": "0.7.4",
+        "repo": "sheldon",
         "type": "github"
       }
     },

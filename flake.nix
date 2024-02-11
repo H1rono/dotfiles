@@ -61,9 +61,6 @@
         rustPlatform = final: prev: {
           rustPlatform = prev.callPackage rustPlatform { };
         };
-        sheldon = final: prev: {
-          sheldon = prev.callPackage ./packages/sheldon.nix { };
-        };
         mise = final: prev: {
           mise = prev.callPackage ./packages/mise.nix {
             src = mise;
@@ -77,6 +74,11 @@
             src = cargo-clean-all;
           };
         };
+        sheldon = final: prev: {
+          sheldon = prev.callPackage ./packages/sheldon.nix {
+            src = sheldon;
+          };
+        };
       };
     } // flake-utils.lib.eachDefaultSystem (system:
     let
@@ -85,10 +87,10 @@
         overlays = [
           self.overlays.fenix
           self.overlays.rustToolchain
-          self.overlays.sheldon
           self.overlays.mise
           self.overlays.firge-nerd
           self.overlays.cargo-clean-all
+          self.overlays.sheldon
         ];
       };
     in

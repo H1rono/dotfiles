@@ -1,0 +1,10 @@
+# https://rye-up.com/guide/config/#config-file
+
+[behavior]
+# When set to true the `managed` flag is always assumed to be true.
+force-rye-managed = false
+
+# Enables global shims when set to `true`. This means that the installed
+# `python` shim will resolve to a Rye managed toolchain even outside of
+# virtual environments.
+global-python = false

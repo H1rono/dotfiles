@@ -89,6 +89,7 @@ in
     ".config/mise/config.toml".source = ./config/mise/config.toml;
     ".config/sheldon/plugins.toml".source = ./config/sheldon/plugins.toml;
     ".config/git/gitmessage.txt".source = ./config/git/gitmessage.txt;
+    ".rye/config.toml".source = ./rye/config.toml;
     ".tmux/plugins/tpm".source = pkgs.fetchFromGitHub {
       owner = "tmux-plugins";
       repo = "tpm";

@@ -51,32 +51,45 @@ Please see [manual installation of dependencies](#manual-installation-of-depende
 
 ```
 dotfiles
-├── .gitignore              -- .gitignore
-├── config
+├── .github
+│   ├── dependabot.yml        -- Dependabot configuration file
+│   └── workflows
+│       ├── home-manager.yml  -- GitHub Actions to check home-manager build
+│       └── update-flake.yml  -- GitHub Actions to update flake.lock automatically
+├── .gitignore                -- .gitignore
+├── config                    -- ~/.config
 │   ├── bat
-│   │   └── config.conf     -- default options of `bat`
+│   │   └── config.conf       -- default options of `bat`
 │   ├── git
-│   │   └── gitmessage.txt  -- Git commit template
-│   ├── nvim
-│   │   └── init.vim        -- Neovim startup script
+│   │   └── gitmessage.txt    -- Git commit template
 │   ├── mise
-│   │   └── config.toml     -- mise global configuration
+│   │   └── config.toml       -- mise global configuration
+│   ├── nvim
+│   │   └── init.vim          -- Neovim startup script
 │   ├── sheldon
-│   │   └── plugins.toml    -- Sheldon plugin information
-│   └── starship.toml       -- Starship configuration
-├── flake.lock              -- lockfile of flake.nix
-├── flake.nix               -- entrypoint of home-manager
-├── home.nix                -- configuration body of home-manager
-├── install.sh              -- install script of dotfiles
-├── LICENSE                 -- GPL-3.0 licence
+│   │   └── plugins.toml      -- Sheldon plugin information
+│   └── starship.toml         -- Starship configuration
+├── flake.lock                -- lockfile of flake.nix
+├── flake.nix                 -- entrypoint of Nix Flakes
+├── home.nix                  -- configuration body of home-manager
+├── install.sh                -- install script of dotfiles
+├── LICENSE                   -- GPL-3.0 licence
+├── nix                       -- Nix helper functions
+│   ├── fetchFlakeInput.nix
+│   ├── readFlakeLock.nix
+│   └── readInputInfo.nix
 ├── packages
-│   ├── firge-nerd.nix      -- package file to install FirgeNerd Console
-│   └── sheldon.nix         -- package file to install Sheldon
-├── README.md               -- this file
-├── rust-toolchain.toml     -- information of rust toolchain
-├── tmux.conf               -- tmux configuration
-├── wezterm.lua             -- WezTerm configuration
-└── zshrc                   -- Zsh startup script
+│   ├── cargo-clean-all.nix   -- Nix package file to install cargo-clean-all
+│   ├── firge-nerd.nix        -- Nix package file to install FirgeNerd Console
+│   ├── mise.nix              -- Nix package file to install mise
+│   └── sheldon.nix           -- Nix package file to install Sheldon
+├── README.md                 -- this file
+├── rust-toolchain.toml       -- information of rust toolchain
+├── rye
+│   └── config.toml           -- rye configuration file
+├── tmux.conf                 -- tmux configuration
+├── wezterm.lua               -- WezTerm configuration
+└── zshrc                     -- Zsh startup script
 ```
 
 ## About [gitmessage.txt](./config/git/gitmessage.txt)

@@ -31,14 +31,23 @@ my dotfiles
     - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
     - [wakatime-zsh-plugin](https://github.com/sobolevn/wakatime-zsh-plugin)
 - prompt customizing: [Starship](https://starship.rs/) ([GitHub](https://github.com/starship/starship))
-- programming language manager: [mise](https://mise.jdx.dev) ([GitHub](https://github.com/jdx/mise))
-    - managed languages: [Go](https://go.dev), [Python](https://www.python.org), [NodeJS](https://nodejs.org/en)
+- programming languages/tools manager: [mise](https://mise.jdx.dev) ([GitHub](https://github.com/jdx/mise))
+    - managed languages/tools:
+        [Go](https://go.dev), [Python](https://www.python.org), [NodeJS](https://nodejs.org/en),
+        [Deno](https://deno.com), [rye](https://rye-up.com)
 - modern CLI tools
     - [jq](https://jqlang.github.io/jq/) ([GitHub](https://github.com/jqlang/jq))
     - [fzf](https://github.com/junegunn/fzf)
     - [bat](https://github.com/sharkdp/bat)
     - [zoxide](https://github.com/ajeetdsouza/zoxide)
     - [lsd](https://github.com/lsd-rs/lsd)
+    - [gh](https://cli.github.com) ([GitHub](https://github.com/cli/cli))
+    - [dust](https://github.com/bootandy/dust)
+- [rustup](https://rustup.rs) (optional)
+    - Required if setupping without Home Manager
+- [cargo](https://doc.rust-lang.org/cargo/)
+    - subcommands:
+        [cargo-clean-all](https://github.com/dnlmlr/cargo-clean-all)
 - terminal multiplexer: [tmux](https://github.com/tmux/tmux)
 - tmux plugin manager: [tpm](https://github.com/tmux-plugins/tpm)
     - [odedlaz/tmux-onedark-theme](https://github.com/odedlaz/tmux-onedark-theme)
@@ -92,11 +101,11 @@ dotfiles
 └── zshrc                     -- Zsh startup script
 ```
 
-## About [gitmessage.txt](./config/git/gitmessage.txt)
+## About [`gitmessage.txt`](./config/git/gitmessage.txt)
 
 This file is used for setting `git config --global commit.template`. There is my favorite list of [gitmoji](https://gitmoji.dev/).
 
-## About [rust-toolchain.toml](./rust-toolchain.toml)
+## About [`rust-toolchain.toml`](./rust-toolchain.toml)
 
 This file is currently used by home-manager (with [fenix](https://github.com/nix-community/fenix)), to determine what version of rust is to be installed. Its layout follows [Overrides - The rustup book #The toolchain file](https://rust-lang.github.io/rustup/overrides.html#the-toolchain-file), which is used for per-directory overrides with rustup.
 
@@ -109,7 +118,7 @@ $ rustup default $TOOLCHAIN_CHANNEL
 $ rustup component add $COMPONENT
 ```
 
-## About `install.sh`
+## About [`install.sh`](./install.sh)
 
 This script (currently) only makes or updates symbolic links from configuration files in this repository to corresponding ones in the specified directory (`$HOME` by default), and updates **global** git configuration.
 
@@ -145,6 +154,10 @@ ref:
 
 ## Manual installation of dependencies
 
+> [!NOTE]
+> [gh](https://cli.github.com), [dust](https://github.com/bootandy/dust), and [cargo-clean-all](https://github.com/dnlmlr/cargo-clean-all)
+> are not included in the commands below. This issue will be fixed soon.
+
 ### in macOS
 
 with [Homebrew](https://brew.sh/):
@@ -179,7 +192,8 @@ $ sudo apt-get install ./wezterm-20230408-112425-69ae8472.Ubuntu22.04.deb
 $ rm ./wezterm-20230408-112425-69ae8472.Ubuntu22.04.deb
 ```
 
-Since the commands above to install WezTerm works in only Ubuntu 22.04, please check [Linux installation](https://wezfurlong.org/wezterm/install/linux.html).
+> [!WARNING]
+> Since the commands above to install WezTerm only works in Ubuntu 22.04, please check [Linux installation](https://wezfurlong.org/wezterm/install/linux.html).
 
 see also [general operation](#general-operation) below.
 

@@ -1,10 +1,13 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+set -eu
+set -o pipefail
 
 if [ -f .env ] ; then
-    # ref: https://qiita.com/reflet/items/2caf9dbf0e3f775276ec
-    export $(cat .env | grep -v '^#' | xargs)
+	# ref: https://qiita.com/reflet/items/2caf9dbf0e3f775276ec
+	export $(cat .env | grep -v '^#' | xargs)
 else
-    touch .env
+	touch .env
 fi
 
 DEST_DIR="${1:-${LAST_DEST_DIR:-$HOME}}"
@@ -27,48 +30,48 @@ tmux.conf                   .tmux.conf
 config/starship.toml        .config/starship.toml
 config/bat/config.conf      .config/bat/config
 config/nvim/init.vim        .config/nvim/init.vim
-config/mise/config.toml      .config/mise/config.toml
+config/mise/config.toml     .config/mise/config.toml
 config/sheldon/plugins.toml .config/sheldon/plugins.toml
 config/git/gitmessage.txt   .config/git/gitmessage.txt
 rye/config.toml             .rye/config.toml
 "
 
 case "$DOTFILES_STATUS" in
-    "not_installed" )
-        echo "this dotfiles repository is not installed, install dotfiles from \`$SRC_DIR\` into \`$DEST_DIR\`"
-    ;;
-    "installed" )
-        echo "this dotfiles repository is already installed, update symlinks from \`$SRC_DIR\` into \`$DEST_DIR\`"
-    ;;
-    * )
-        echo "ERROR! unexpected environment variable DOTFILES_STATUS='$DOTFILES_STATUS', please check the content of .env"
-        exit 1
-    ;;
+	"not_installed" )
+		echo "this dotfiles repository is not installed, install dotfiles from \`$SRC_DIR\` into \`$DEST_DIR\`"
+	;;
+	"installed" )
+		echo "this dotfiles repository is already installed, update symlinks from \`$SRC_DIR\` into \`$DEST_DIR\`"
+	;;
+	* )
+		echo "ERROR! unexpected environment variable DOTFILES_STATUS='$DOTFILES_STATUS', please check the content of .env"
+		exit 1
+	;;
 esac
 
 function check_installed() {
-    if   [ -L "$1" ] ; then
-        echo "\`$1\` is a simbolic link, unlink this"
-        unlink "$1"
-    elif [ -f "$1" ] ; then
-        echo "\`$1\` is a file, move to \`$1.old\` (if \`$1.old\` exists, remove it)"
-        [ -e "$1.old" ] && rm "$1.old"
-        mv "$1" "$1.old"
-    fi
+	if   [ -L "$1" ] ; then
+		echo "\`$1\` is a simbolic link, unlink this"
+		unlink "$1"
+	elif [ -f "$1" ] ; then
+		echo "\`$1\` is a file, move to \`$1.old\` (if \`$1.old\` exists, remove it)"
+		[ -e "$1.old" ] && rm "$1.old"
+		mv "$1" "$1.old"
+	fi
 }
 
 echo "$INSTALL_MAPPINGS" | while read MAP
 do
-    [ ! -n "$MAP" ] && continue
-    ARGS=($MAP)
-    SRC="$SRC_DIR/${ARGS[0]}"
-    DEST="$DEST_DIR/${ARGS[1]}"
-    DEST_D=`dirname "$DEST"`
-    echo "mkdir -p '$DEST_D'"
-    mkdir -p "$DEST_D"
-    check_installed "$DEST"
-    echo "create a symbolic link to \`$SRC\` at \`$DEST\`"
-    ln -s "$SRC" "$DEST"
+	[ ! -n "$MAP" ] && continue
+	ARGS=($MAP)
+	SRC="$SRC_DIR/${ARGS[0]}"
+	DEST="$DEST_DIR/${ARGS[1]}"
+	DEST_D=`dirname "$DEST"`
+	echo "mkdir -p '$DEST_D'"
+	mkdir -p "$DEST_D"
+	check_installed "$DEST"
+	echo "create a symbolic link to \`$SRC\` at \`$DEST\`"
+	ln -s "$SRC" "$DEST"
 done
 
 echo "update git commit template"

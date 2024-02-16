@@ -93,7 +93,7 @@ local function bg_image(candidates)
     end
     return {
         source = { File = bg_image_path },
-        opacity = 0.7,
+        opacity = 0.32,
         hsb = {
             hue = 1.0,
             saturation = 1.0,

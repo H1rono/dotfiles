@@ -77,20 +77,12 @@ end
 -- type WezTermBackgroundLayer
 -- ... https://wezfurlong.org/wezterm/config/lua/config/background.html#layer-definition
 
--- fn(nil | array<string>) -> nil | WezTermBackgroundLayer
+-- fn(array<string>) -> nil | WezTermBackgroundLayer
 local function bg_image(candidates)
     -- candidates is an array of background image paths
-    local bg_image_candidates --[[array<string>]] = candidates or {
-        home .. "/Pictures/bg.jpeg",
-        home .. "/Pictures/bg.jpg",
-        home .. "/.bg.jpeg",
-        home .. "/.bg.jpg",
-        xdg_config_home .. "/bg.jpeg",
-        xdg_config_home .. "/bg.jpg"
-    }
     local bg_image_path --[[nil | string]]
-    for i = 1, #bg_image_candidates do
-        local bg_candidate --[[string]] = bg_image_candidates[i]
+    for i = 1, #candidates do
+        local bg_candidate --[[string]] = candidates[i]
         if file_exists(bg_candidate) then
             bg_image_path = bg_candidate
             break
@@ -101,7 +93,7 @@ local function bg_image(candidates)
     end
     return {
         source = { File = bg_image_path },
-        opacity = 0.32,
+        opacity = 0.7,
         hsb = {
             hue = 1.0,
             saturation = 1.0,
@@ -125,10 +117,13 @@ local function make_background()
         },
     }
     local img --[[nil | WezTermBackgroundLayer]] = bg_image {
+        home .. "/Pictures/bg.png",
         home .. "/Pictures/bg.jpeg",
         home .. "/Pictures/bg.jpg",
+        home .. "/bg.png",
         home .. "/.bg.jpeg",
         home .. "/.bg.jpg",
+        xdg_config_home .. "/bg.png",
         xdg_config_home .. "/bg.jpeg",
         xdg_config_home .. "/bg.jpg"
     }

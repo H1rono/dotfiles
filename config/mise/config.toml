@@ -16,12 +16,12 @@ rye = "https://github.com/Azuki-bar/asdf-rye.git"
 
 [tools]
 # determined from: https://github.com/denoland/deno/releases
-deno = "1.39.2"
+deno = "1.40.5"
 # determined from: https://go.dev/dl/
-go = "1.21.4"
+go = "1.22.0"
 # determined from: https://www.python.org/downloads/
-python = "3.11.6"
+python = "3.11.8"
 # determined from: https://nodejs.org/en/about/previous-releases
-node = "20.10.0"
+node = "20.11.1"
 # determined from: https://github.com/mitsuhiko/rye/releases
-rye = "0.22.0"
+rye = "0.24.0"

@@ -3,7 +3,7 @@ let
   fetchFlakeInput = import ../nix/fetchFlakeInput.nix;
   readInputInfo = import ../nix/readInputInfo.nix;
 in
-{ pkgs ? import <nixpkgs> { }
+{ pkgs ? import (fetchFlakeInput "nixpkgs") { }
 , lib ? pkgs.lib
 , rustPlatform ? pkgs.rustPlatform
 , src ? fetchFlakeInput "cargo-clean-all"

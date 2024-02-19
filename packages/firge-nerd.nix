@@ -1,4 +1,7 @@
-{ pkgs ? import <nixpkgs> { }
+let
+  fetchFlakeInput = import ../nix/fetchFlakeInput.nix;
+in
+{ pkgs ? import (fetchFlakeInput "nixpkgs") { }
 , lib ? pkgs.lib
 }:
 let

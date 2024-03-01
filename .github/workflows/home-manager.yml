@@ -16,7 +16,7 @@ jobs:
       - uses: cachix/install-nix-action@v25
         with:
           nix_path: "nixpkgs=channel:release-23.11"
-      - uses: DeterminateSystems/magic-nix-cache-action@v2
+      - uses: DeterminateSystems/magic-nix-cache-action@v3
       - run: |
           nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
           nix-channel --update

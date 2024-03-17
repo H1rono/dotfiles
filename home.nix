@@ -61,6 +61,7 @@ in
     zoxide
     direnv
     gh
+    lazygit
     du-dust
     sheldon
     cargo-clean-all

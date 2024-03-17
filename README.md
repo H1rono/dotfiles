@@ -21,6 +21,7 @@ my dotfiles
 ## Dependencies
 
 - [Home Manager](https://nix-community.github.io/home-manager/) ([GitHub](https://github.com/nix-community/home-manager)) (optional)
+- [LLVM](https://llvm.org)
 - shell: [Zsh](https://www.zsh.org) ([GitHub mirror](https://github.com/zsh-users/zsh))
 - terminal emulator: [WezTerm](https://wezfurlong.org/wezterm/) ([GitHub](https://github.com/wez/wezterm))
 - Zsh plugin manager: [Sheldon](https://sheldon.cli.rs/) ([GitHub](https://github.com/rossmacarthur/sheldon))
@@ -42,6 +43,7 @@ my dotfiles
     - [zoxide](https://github.com/ajeetdsouza/zoxide)
     - [lsd](https://github.com/lsd-rs/lsd)
     - [gh](https://cli.github.com) ([GitHub](https://github.com/cli/cli))
+    - [lazygit](https://github.com/jesseduffield/lazygit)
     - [dust](https://github.com/bootandy/dust)
 - [rustup](https://rustup.rs) (optional)
     - Required if setupping without Home Manager
@@ -148,14 +150,11 @@ $ home-manager switch --flake /path/to/dotfiles
 
 **warning**: this way is only tested in M1 MacBook Air (system `aarch64-darwin`).
 
-ref:
-
-- [nix-systems/current-system: Like `builtins.currentSystem` but for the CLI](https://github.com/nix-systems/current-system)
-
 ## Manual installation of dependencies
 
 > [!NOTE]
-> [gh](https://cli.github.com), [dust](https://github.com/bootandy/dust), and [cargo-clean-all](https://github.com/dnlmlr/cargo-clean-all)
+> [LLVM](https://llvm.org), [gh](https://cli.github.com), [lazygit](https://github.com/jesseduffield/lazygit),
+> [dust](https://github.com/bootandy/dust), and [cargo-clean-all](https://github.com/dnlmlr/cargo-clean-all)
 > are not included in the commands below. This issue will be fixed soon.
 
 ### in macOS

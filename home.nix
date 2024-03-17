@@ -65,6 +65,9 @@ in
     sheldon
     cargo-clean-all
 
+    # LLVM
+    llvmPackages.llvm
+
     # nix devtools
     nil
     nixpkgs-fmt
@@ -121,6 +124,8 @@ in
   # if you don't want to manage your shell through Home Manager.
   home.sessionVariables = {
     # EDITOR = "emacs";
+    OPT = "${pkgs.llvmPackages.llvm}/bin/opt";
+    LLC = "${pkgs.llvmPackages.llvm}/bin/llc";
   };
 
   fonts.fontconfig.enable = true;

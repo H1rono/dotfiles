@@ -43,9 +43,9 @@
     }:
     let
       user = "kh";
-      rustToolchain = { system, fenix, ... }: fenix.fromToolchainFile {
+      rustToolchain = { lib, system, fenix, ... }: fenix.fromToolchainFile {
         file = ./rust-toolchain.toml;
-        sha256 = "sha256-e4mlaJehWBymYxJGgnbuCObVlqMlQSilZ8FljG9zPHY=";
+        sha256 = "sha256-+syqAd2kX8KVa8/U2gz3blIQTTsYYt3U63xBWaGOSc8=";
       };
       rustPlatform = { callPackage, makeRustPlatform, ... }: makeRustPlatform rec {
         rustc = callPackage rustToolchain { };

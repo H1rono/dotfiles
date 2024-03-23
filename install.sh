@@ -10,7 +10,8 @@ else
 	touch .env
 fi
 
-DEST_DIR="${1:-${LAST_DEST_DIR:-$HOME}}"
+LAST_DEST_DIR="${LAST_DEST_DIR:-$HOME}"
+DEST_DIR="${1:-${LAST_DEST_DIR}}"
 mkdir -p "$DEST_DIR"
 DEST_DIR=`readlink -f "$DEST_DIR"`
 

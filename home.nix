@@ -67,7 +67,8 @@ in
     cargo-clean-all
 
     # LLVM
-    llvmPackages.llvm
+    llvmPackages_17.llvm
+    llvmPackages_17.clang-unwrapped
 
     # nix devtools
     nil

@@ -3,3 +3,6 @@
 # Ignore build outputs from performing a nix-build or `nix build` command
 result
 result-*
+
+# lock of brew bundle dump
+Brewfile.lock.json

@@ -64,7 +64,7 @@ inline = "autoload -Uz compinit && zsh-defer compinit"
 inline = 'eval "$(zoxide init zsh)"'
 
 [plugins.direnv]
-inline = 'eval "$(direnv hook zsh)"'
+inline = 'type direnv &>/dev/null && eval "$(direnv hook zsh)"'
 
 [plugins.mise]
 inline = 'eval "$(mise activate zsh)"'

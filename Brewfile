@@ -2,7 +2,6 @@ tap "homebrew/bundle"
 
 brew "bat"
 brew "curl"
-brew "direnv"
 brew "dust"
 brew "fzf"
 brew "gh"

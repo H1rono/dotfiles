@@ -17,8 +17,6 @@ RYE_NO_AUTO_INSTALL = 1
 [tools]
 # determined from: https://github.com/denoland/deno/releases
 # deno = "1.40.5"
-# determined from: https://go.dev/dl/
-go = "1.22.0"
 # determined from: https://www.python.org/downloads/
 # python = "3.11.8"
 # determined from: https://nodejs.org/en/about/previous-releases

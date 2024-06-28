@@ -22,4 +22,4 @@ go = "1.22.0"
 # determined from: https://www.python.org/downloads/
 # python = "3.11.8"
 # determined from: https://nodejs.org/en/about/previous-releases
-node = "20.11.1"
+node = "22.3.0"

@@ -1,4 +1,8 @@
-# https://rye-up.com/guide/config/#config-file
+# https://rye.astral.sh/guide/config/#config-file
+
+[default]
+# This is the default build system that is used
+build-system = "setuptools"
 
 [behavior]
 # When set to true the `managed` flag is always assumed to be true.

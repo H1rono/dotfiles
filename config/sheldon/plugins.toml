@@ -33,6 +33,12 @@ inline = "setopt RM_STAR_SILENT"
 [plugins.brew-completion]
 inline = 'type brew &>/dev/null && FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"'
 
+[plugins.brew-llvm]
+inline = """
+type brew &> /dev/null \
+&& export PATH="$(brew --prefix)/opt/llvm/bin:$PATH"
+"""
+
 [plugins.hm-session-vars]
 inline = """
 [ -c ~/.nix-profile/etc/profile.d/hm-session-vars.sh ] \

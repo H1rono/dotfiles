@@ -2,6 +2,7 @@ tap "homebrew/bundle"
 
 brew "bat"
 brew "bottom"
+brew "cmake"
 brew "curl"
 brew "dust"
 brew "fastfetch"

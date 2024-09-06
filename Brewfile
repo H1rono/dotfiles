@@ -1,4 +1,5 @@
 tap "homebrew/bundle"
+tap "probe-rs/probe-rs"
 
 brew "bat"
 brew "bottom"
@@ -18,6 +19,7 @@ brew "mise"
 brew "neovim"
 brew "nyancat"
 brew "openssh"
+brew "probe-rs"
 brew "protobuf"
 brew "python"
 brew "rustup"

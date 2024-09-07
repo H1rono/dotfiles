@@ -1,6 +1,8 @@
 tap "homebrew/bundle"
 tap "probe-rs/probe-rs"
 
+brew "arm-none-eabi-gcc"
+brew "arm-none-eabi-gdb"
 brew "bat"
 brew "bottom"
 brew "cmake"

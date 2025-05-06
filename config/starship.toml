@@ -90,6 +90,8 @@ deleted = "✘ "
 style = "fg:#5CCFE6"
 ignore_submodules = false
 disabled = false
+# TODO: revert this
+use_git_executable = true
 
 [docker_context]
 # \uf308: nf-linux-docker

@@ -46,6 +46,12 @@ inline = """
 && export PATH="$HOME/go/bin:$PATH"
 """
 
+[plugins.brew-rustup]
+inline = """
+type brew &> /dev/null \
+&& export PATH="$(brew --prefix rustup)/bin:$PATH"
+"""
+
 [plugins.hm-session-vars]
 inline = """
 [ -c ~/.nix-profile/etc/profile.d/hm-session-vars.sh ] \

@@ -21,3 +21,7 @@ RYE_NO_AUTO_INSTALL = 1
 # python = "3.11.8"
 # determined from: https://nodejs.org/en/about/previous-releases
 node = "22.3.0"
+
+[settings]
+# https://github.com/jdx/mise/discussions/4345
+idiomatic_version_file_enable_tools = []

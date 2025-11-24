@@ -2,6 +2,7 @@ tap "probe-rs/probe-rs"
 
 brew "bat"
 brew "bottom"
+brew "cargo-expand"
 brew "cmake"
 brew "curl"
 brew "deno"

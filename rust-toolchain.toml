@@ -1,5 +1,5 @@
 [toolchain]
-channel = "1.77.2"
+channel = "1.92.0"
 components = ["rust-analyzer", "rust-src", "llvm-tools"]
 # The host platform is automatically included
 targets = []

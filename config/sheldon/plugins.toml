@@ -58,6 +58,18 @@ inline = """
 && source ~/.nix-profile/etc/profile.d/hm-session-vars.sh
 """
 
+[plugins.user-local-path]
+inline = """
+[ -d ~/.local/bin ] \
+&& export PATH="$HOME/.local/bin:$PATH"
+"""
+
+[plugins.cargo-bin-path]
+inline = """
+[ -d ~/.cargo/bin ] \
+&& export PATH="$HOME/.cargo/bin:$PATH"
+"""
+
 [plugins.rust-zsh-completions]
 github = "ryutok/rust-zsh-completions"
 
@@ -84,6 +96,12 @@ inline = 'eval "$(fzf --zsh)"'
 
 [plugins.direnv]
 inline = 'type direnv &>/dev/null && eval "$(direnv hook zsh)"'
+
+[plugins.ghcup]
+inline = """
+[ -d "$HOME/.ghcup/bin" ] \
+&& export PATH="$HOME/.ghcup/bin:$PATH"
+"""
 
 [plugins.mise]
 inline = 'eval "$(mise activate zsh)"'

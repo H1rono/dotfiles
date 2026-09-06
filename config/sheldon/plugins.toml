@@ -70,6 +70,12 @@ inline = """
 && export PATH="$HOME/.cargo/bin:$PATH"
 """
 
+[plugins.worktrunk]
+inline = """
+type wt &> /dev/null \
+&& eval "$(command wt config shell init zsh)"
+"""
+
 [plugins.rust-zsh-completions]
 github = "ryutok/rust-zsh-completions"
 

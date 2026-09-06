@@ -34,6 +34,7 @@ brew "tmux"
 brew "tokei"
 brew "uv"
 brew "wget"
+brew "worktrunk"
 brew "zoxide"
 brew "zsh"
 

@@ -29,6 +29,9 @@ github = "romkatv/zsh-defer"
 [plugins.rm-star-silent]
 inline = "setopt RM_STAR_SILENT"
 
+[plugins.env-editor]
+inline = 'export EDITOR=nvim'
+
 # https://docs.brew.sh/Shell-Completion#configuring-completions-in-zsh
 [plugins.brew-completion]
 inline = 'type brew &>/dev/null && FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"'

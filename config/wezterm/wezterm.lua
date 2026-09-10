@@ -87,7 +87,16 @@ local function make_background()
     return res
 end
 
-return {
+-- fn(partial<WezTermConfig>) -> WezTermConfig
+local function config_with(overrides)
+    local config --[[WezTermConfig]] = wezterm.config_builder()
+    for k, v in pairs(overrides) do
+        config[k] = v
+    end
+    return config
+end
+
+return config_with {
     font = make_font(),
     background = make_background(),
     color_scheme = "Catppuccin Mocha",

@@ -26,7 +26,6 @@ DOTFILES_STATUS="${DOTFILES_STATUS:-not_installed}"
 # for each line: $SRC_DIR/$line[0] -> $DEST_DIR/$line[1]
 INSTALL_MAPPINGS="
 zshrc                        .zshrc
-wezterm.lua                  .wezterm.lua
 tmux.conf                    .tmux.conf
 config/starship.toml         .config/starship.toml
 config/bat/config.conf       .config/bat/config
@@ -34,6 +33,7 @@ config/nvim/init.vim         .config/nvim/init.vim
 config/mise/config.toml      .config/mise/config.toml
 config/sheldon/plugins.toml  .config/sheldon/plugins.toml
 config/git/gitmessage.txt    .config/git/gitmessage.txt
+config/wezterm/wezterm.lua   .config/wezterm/wezterm.lua
 config/worktrunk/config.toml .config/worktrunk/config.toml
 rye/config.toml              .rye/config.toml
 "

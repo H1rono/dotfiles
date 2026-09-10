@@ -86,7 +86,6 @@ in
   # ** this should be synced with `install.sh`. **
   home.file = {
     ".zshrc".source = ./zshrc;
-    ".wezterm.lua".source = ./wezterm.lua;
     ".tmux.conf".source = ./tmux.conf;
     ".config/starship.toml".source = ./config/starship.toml;
     ".config/bat/config".source = ./config/bat/config.conf;

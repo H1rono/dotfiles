@@ -17,22 +17,6 @@ local function file_exists(name)
     return res
 end
 
--- fn() -> array<string>
--- returns the sorted array of installed font names
-local function installed_fonts()
-    local cmd --[[string]] = "fc-list | awk -F ':' '{print $2}' | sort | uniq"
-    local handle --[[file]] = io.popen(cmd)  -- I'm not sure whether this type is correct
-    local cmd_res --[[string]] = handle:read("*a")
-    handle:close()
-    local --[[array<string>]] res = {}
-    for line --[[string]] in cmd_res:gmatch("[^\n\r]*") do
-        local l --[[string]] = line:gsub("^%s*(.-)%s*$", "%1")
-        res[#res + 1] = l
-    end
-    table.sort(res, function(a, b) return a < b end)
-    return res
-end
-
 -- fn(string, array<string>) -> boolean
 -- judges whether the font named `font_name` exists in the array `fonts`
 local function font_exists(font_name, fonts)
@@ -63,15 +47,13 @@ end
 
 -- fn() -> wezterm.font_with_fallback
 local function make_font()
-    local all_fonts --[[array<string>]] = wezterm.GLOBAL.fonts or installed_fonts()
-    local candidates --[[array<string>]] = {
+    local fonts --[[array<string>]] = {
         -- my favorite fonts
         "SF Mono",
         "Menlo",
         "FirgeNerd Console",  -- https://github.com/yuru7/Firge
     }
-    local fallback --[[array<string>]] = get_font_fallback(candidates, all_fonts)
-    return wezterm.font_with_fallback(fallback)
+    return wezterm.font_with_fallback(fonts)
 end
 
 -- type WezTermBackgroundLayer
@@ -132,8 +114,6 @@ local function make_background()
     end
     return res
 end
-
-wezterm.GLOBAL.fonts = wezterm.GLOBAL.fonts or installed_fonts()
 
 return {
     font = make_font(),

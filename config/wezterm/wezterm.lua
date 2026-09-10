@@ -92,5 +92,7 @@ return {
     background = make_background(),
     hide_tab_bar_if_only_one_tab = true,
     color_scheme = "Catppuccin Mocha",
+    initial_cols = 120,
+    initial_rows = 36,
     window_decorations = "RESIZE"
 }

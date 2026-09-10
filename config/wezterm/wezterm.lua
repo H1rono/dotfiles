@@ -75,7 +75,7 @@ local function make_font()
 end
 
 -- type WezTermBackgroundLayer
--- ... https://wezfurlong.org/wezterm/config/lua/config/background.html#layer-definition
+-- ... https://wezterm.org/config/lua/config/background.html#layer-definition
 
 -- fn(array<string>) -> nil | WezTermBackgroundLayer
 local function bg_image(candidates)

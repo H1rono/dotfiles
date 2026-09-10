@@ -98,8 +98,11 @@ end
 
 return config_with {
     font = make_font(),
+    font_size = 13.0,
     background = make_background(),
     color_scheme = "Catppuccin Mocha",
+    cell_width = 1.0,
+    line_height = 1.1,
     initial_cols = 120,
     initial_rows = 36,
     tab_bar_at_bottom = true,

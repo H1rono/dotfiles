@@ -17,34 +17,6 @@ local function file_exists(name)
     return res
 end
 
--- fn(string, array<string>) -> boolean
--- judges whether the font named `font_name` exists in the array `fonts`
-local function font_exists(font_name, fonts)
-    -- binary search
-    local ng --[[integer]], ok --[[integer]] = 0, #fonts
-    while ng + 1 < ok do
-        local mid --[[integer]] = (ng + ok) >> 1
-        if fonts[mid] < font_name then
-            ng = mid
-        else
-            ok = mid
-        end
-    end
-    return fonts[ok] ~= nil and font_name == fonts[ok]
-end
-
--- fn(nil | array<string>, array<string>) -> array<string>
-local function get_font_fallback(candidates, all_fonts)
-    local res --[[array<string>]] = {}
-    for i --[[integer]] = 1, #candidates do
-        local cand --[[string]] = candidates[i]
-        if font_exists(cand, all_fonts) then
-            table.insert(res, cand)
-        end
-    end
-    return res
-end
-
 -- fn() -> wezterm.font_with_fallback
 local function make_font()
     local fonts --[[array<string>]] = {

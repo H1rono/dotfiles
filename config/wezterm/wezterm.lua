@@ -17,6 +17,21 @@ local function file_exists(name)
     return res
 end
 
+-- fn({[OS]: T}) -> T
+local match_os = (function()
+    local key -- string
+    if string.match(wezterm.target_triple, "apple") then
+        key = "macos"
+    elseif string.match(wezterm.target_triple, "windows") then
+        key = "windows"
+    else
+        key = "linux"
+    end
+    return function(cases)
+        return cases[key]
+    end
+end)()
+
 -- fn() -> wezterm.font_with_fallback
 local function make_font()
     local fonts --[[array<string>]] = {
@@ -96,10 +111,18 @@ local function config_with(overrides)
     return config
 end
 
+local blur_key --[[string]] = match_os {
+    macos = "macos_window_background_blur",
+    windows = "win32_system_backdrop",
+    linux = "wayland_window_background_blur",
+}
+
 return config_with {
     font = make_font(),
     font_size = 13.0,
     background = make_background(),
+    window_background_opacity = 0.3,
+    [blur_key] = 12,
     color_scheme = "Catppuccin Mocha",
     cell_width = 1.0,
     line_height = 1.1,

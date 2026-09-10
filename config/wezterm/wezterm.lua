@@ -74,7 +74,7 @@ local function make_background()
         home .. "/Pictures/bg.png",
         home .. "/Pictures/bg.jpeg",
         home .. "/Pictures/bg.jpg",
-        home .. "/bg.png",
+        home .. "/.bg.png",
         home .. "/.bg.jpeg",
         home .. "/.bg.jpg",
         xdg_config_home .. "/bg.png",
@@ -90,9 +90,9 @@ end
 return {
     font = make_font(),
     background = make_background(),
-    hide_tab_bar_if_only_one_tab = true,
     color_scheme = "Catppuccin Mocha",
     initial_cols = 120,
     initial_rows = 36,
-    window_decorations = "RESIZE"
+    tab_bar_at_bottom = true,
+    window_decorations = "TITLE | RESIZE",
 }

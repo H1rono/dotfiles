@@ -91,5 +91,6 @@ return {
     font = make_font(),
     background = make_background(),
     hide_tab_bar_if_only_one_tab = true,
+    color_scheme = "Catppuccin Mocha",
     window_decorations = "RESIZE"
 }

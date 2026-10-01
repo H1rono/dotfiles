@@ -42,6 +42,12 @@ type brew &> /dev/null \
 && export PATH="$(brew --prefix)/opt/llvm/bin:$PATH"
 """
 
+[plugins.brew-curl]
+inline = """
+type brew &> /dev/null \
+&& export PATH="$(brew --prefix)/opt/curl/bin:$PATH"
+"""
+
 [plugins.gopath]
 # FIXME: see GOBIN, or_else GOROOT
 inline = """

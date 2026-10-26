@@ -1,6 +1,4 @@
 [env]
-# https://rye-up.com/guide/installation/#preventing-auto-installation
-RYE_NO_AUTO_INSTALL = 1
 
 [plugins]
 # core plugins:
@@ -12,15 +10,13 @@ RYE_NO_AUTO_INSTALL = 1
 # python  https://mise.jdx.dev/lang/python.html
 # ruby    https://mise.jdx.dev/lang/ruby.html
 
-# rye = "https://github.com/Azuki-bar/asdf-rye.git"
-
 [tools]
 # determined from: https://github.com/denoland/deno/releases
 # deno = "1.40.5"
 # determined from: https://www.python.org/downloads/
 # python = "3.11.8"
 # determined from: https://nodejs.org/en/about/previous-releases
-node = "24.15.0"
+node = "24.22.1"
 
 [settings]
 # https://github.com/jdx/mise/discussions/4345
